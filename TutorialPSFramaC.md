@@ -20,7 +20,7 @@ sudo apt-get update
 sudo apt-get install -y m4 ocaml opam zlib1g-dev libsqlite3-dev libgmp-dev libgtk2.0-dev
 ```
 
-### 3 - Em seguida, execute o seguinte comando para instalar a versão mais recente do Frama-C:
+### 4 - Em seguida, execute o seguinte comando para instalar a versão mais recente do Frama-C:
 
 ```
 opam init --disable-sandboxing
@@ -33,7 +33,7 @@ opam install frama-c
 #### Estes comandos inicializam o gerenciador de pacotes OPAM, configuram uma versão específica do OCaml (4.12.0), atualiza o OPAM, e em seguida, instala o Frama-C. <br><br>
 
 
-### 4 - Quando a instalação estiver concluída, você pode testar o Frama-C com o seguinte comando:
+### 5 - Quando a instalação estiver concluída, você pode testar o Frama-C com o seguinte comando:
 
 ```
 frama-c-gui
