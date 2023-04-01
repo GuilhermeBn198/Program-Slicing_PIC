@@ -16,7 +16,7 @@ Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Pro
 
 ## Program Slicing
 ### What is it?
-It's a term used in several  techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria
+It's a term used in several  techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria. 
 ## FRAMA-C
 ### What is it?
 ### What it can do?
