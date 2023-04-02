@@ -11,6 +11,9 @@ Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Pro
     - [ ] aprender a usar a ferramenta
     - [ ] fazer testes
 - [ ] Ler o Capitulo 2 da Tese sobre program slicing
+  - [x] 1/3
+  - [x] 2/3
+  - [ ] 3/3
 
 ---
 
