@@ -17,12 +17,12 @@ Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Pro
 
 ## Program Slicing
 ### What is it?
-
 It's a term used in several  techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria. 
 
 ### We can divide program slicing into two categories:
 1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
 2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
+   
 ### There are 3 different aproaches we can do to slice a program:
 1.  Data-Flow Aproach:
   
@@ -33,6 +33,8 @@ It's a term used in several  techniques to decompose a program based on data-flo
    a
 
 3.  Slicing with pointers and Unstructured control flow
+   
+   a
 
 ## FRAMA-C
 ### What is it?
