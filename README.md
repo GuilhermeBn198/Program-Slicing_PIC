@@ -1,6 +1,7 @@
 # Program Slicing PIC
  Oriented by Herbert Rocha <br>
-Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing
+Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
+All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./initial%20slides/thesis_PIBIC.pdf)
 
 ---
 ### TO DO 27/03~10/04:
@@ -34,13 +35,16 @@ It's a term used in several  techniques to decompose a program based on data-flo
     1. Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG. 
     2. Every switch statement can be transformed into a sequence of if-then-else statements
 <br>
+![program and its cfg](extras/imgs/cfg_example.png) <br>
+a program and its cfg
 <br>
 
 ### There are 3 different aproaches we can do to slice a program:
-1. Data-Flow Aproach: Here we use the original Weiser algorithm to slice a program that does not contain pointers, which compute backward static slices. Where he goes backwards from the points of interest and static because the slice is created independently of a particular run of a program – it preserves a program’s behavior(with respect to a given criterion) on any path that the program can take.
+- Data-Flow Aproach: Here we use the original Weiser algorithm to slice a program that does not contain pointers, which compute backward static slices. Where it goes backwards from the points of interest and static because the slice is created independently of a particular run of a program – it preserves a program’s behavior(with respect to a given criterion) on any path that the program can take.
 
-2.  Use of Dependence Graphs: This time, program dependence graph (PDG) is a slicing method which we use a directed graph that has nodes from a CFG and two kinds of edges – control dependence edges and data dependence edges. 
-1.  Slicing with pointers and Unstructured control flow
+- Use of Dependence Graphs: This time, program dependence graph (PDG) is a slicing method which we use a directed graph that has nodes from a CFG and two kinds of edges – control dependence edges and data dependence edges. Then it forms two subgraphs, control dependence graph and data dependence graph.
+
+- Slicing with pointers and Unstructured control flow: now we can slice programs with pointers and interprocedural control flow.
 
 ## FRAMA-C
 ### What is it?
