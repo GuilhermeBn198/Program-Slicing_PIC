@@ -1,15 +1,16 @@
 # Program Slicing PIC
- Oriented by Herbert Rocha <br>
-Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
-All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./initial%20slides/thesis_PIBIC.pdf)
+    Oriented by Herbert Rocha
+    
+    Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
+All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./initial%20slides/thesis_PIBIC.pdf) and the user-manual from Frama-c platform. [Click here to see it!](./initial%20slides/frama-c-user_manual.pdf) you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html)
 
 ---
 ### TO DO 27/03~10/04:
 - [x] Instalar o Frama-C
   - [x] tutorial de instação do programa concluído!
 - [ ] Criar um tutorial de como usar https://frama-c.com/fc-plugins/slicing.html
-    - [ ] aprender a usar a ferramenta
     - [ ] fazer testes
+    - [x] aprender a usar a ferramenta
 - [x] Ler o Capitulo 2 da Tese sobre program slicing
   - [x] 1/3
   - [x] 2/3
