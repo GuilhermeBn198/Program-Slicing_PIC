@@ -8,9 +8,8 @@ All the data collected here is available in more details in the Master Thesis of
 ### TO DO 27/03~10/04:
 - [x] Instalar o Frama-C
   - [x] tutorial de instação do programa concluído!
-- [ ] Criar um tutorial de como usar https://frama-c.com/fc-plugins/slicing.html
-    - [ ] fazer testes
     - [x] aprender a usar a ferramenta
+    - [x] fazer testes
 - [x] Ler o Capitulo 2 da Tese sobre program slicing
   - [x] 1/3
   - [x] 2/3
@@ -47,11 +46,12 @@ a program and its cfg
 
 - Slicing with pointers and Unstructured control flow: now we can slice programs with pointers and interprocedural control flow.
 
-## FRAMA-C
-### What is it?
-### New versions! [CLICK ME](./extras/informacoesimportantes.md) (pt-br)
-### Tutorial for installation: [CLICK ME!](./extras/TutorialPSFramaC.md)
+# FRAMA-C
+## What is it?
 Frama-C is an open-source extensible and collaborative platform dedicated to source-code analysis of C software. The Frama-C analyzers assist you in various source-code-related activities, from the navigation through unfamiliar projects up to the certification of critical software.
-### What it can do?
+## New versions! [CLICK ME](./extras/informacoesimportantes.md) (pt-br)
+## Tutorial for installation: [CLICK ME!](./extras/TutorialPSFramaC.md)
+
+## What it can do?
 The collaborative approach of Frama-C allows analyzers to build upon the results already computed by other analyzers in the framework. Thanks to this approach, Frama-C can provide a number of sophisticated tools such as a concurrency safety analysis (Mthread), an enforcer of secure information flow (SecureFlow), or a set of tools for various test coverage criteria (LTest), among many others.
 ### Example of usage:
