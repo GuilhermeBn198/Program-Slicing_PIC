@@ -31,13 +31,13 @@ It's a term used in several  techniques to decompose a program based on data-flo
 <br>
 - Definition 2. Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG 
   
-        n1, n2, n3, . . . , nk
+    n1, n2, n3, . . . , nk
 
-    where n1 = ns, nk = ne and for all i, 1 ≤i < k, (ni, ni+1) ∈ E. If a run corresponds to some real execution of a program, we say that it is a feasible run, otherwise it is an unfeasible run. As can be seen
+where n1 = ns, nk = ne and for all i, 1 ≤i < k, (ni, ni+1) ∈ E. If a run corresponds to some real execution of a program, we say that it is a feasible run, otherwise it is an unfeasible run. As can be seen
 
-    Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG. 
+Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG. 
     
-    Every switch statement can be transformed into a sequence of if-then-else statements
+Every switch statement can be transformed into a sequence of if-then-else statements
 
 ![program and its cfg](extras/imgs/cfg_example.png)
     
