@@ -1,7 +1,7 @@
-# Program Slicing PIC
+# Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
     Oriented by Herbert Rocha
     
-    Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
+    
 All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./initial%20slides/thesis_PIBIC.pdf) and the user-manual from Frama-c platform. [Click here to see it!](./initial%20slides/frama-c-user_manual.pdf) you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html)
 
 ---
@@ -29,11 +29,15 @@ It's a term used in several  techniques to decompose a program based on data-flo
  - Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N ×N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 iff n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two. 
 <br>
 <br>
- - Definition 2. Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG <br> <br>
-    n1, n2, n3, . . . , nk
-    1. where n1 = ns, nk = ne and for all i, 1 ≤i <k, (ni, ni+1) ∈ E. If a run corresponds to some real execution of a program, we say that it is a feasible run, otherwise it is an unfeasible run. As can be seen
-    2. Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG. 
-    3. Every switch statement can be transformed into a sequence of if-then-else statements
+- Definition 2. Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG 
+  
+        n1, n2, n3, . . . , nk
+
+    where n1 = ns, nk = ne and for all i, 1 ≤i < k, (ni, ni+1) ∈ E. If a run corresponds to some real execution of a program, we say that it is a feasible run, otherwise it is an unfeasible run. As can be seen
+
+    Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG. 
+    
+    Every switch statement can be transformed into a sequence of if-then-else statements
 
 ![program and its cfg](extras/imgs/cfg_example.png)
     
