@@ -8,6 +8,7 @@ All the data collected here is available in more details in the Master Thesis of
 ### TO DO 27/03~10/04:
 - [x] Instalar o Frama-C
   - [x] tutorial de instação do programa concluído!
+- [x] Criar um tutorial de como usar https://frama-c.com/fc-plugins/slicing.html
     - [x] aprender a usar a ferramenta
     - [x] fazer testes
 - [x] Ler o Capitulo 2 da Tese sobre program slicing
@@ -54,4 +55,33 @@ Frama-C is an open-source extensible and collaborative platform dedicated to sou
 
 ## What it can do?
 The collaborative approach of Frama-C allows analyzers to build upon the results already computed by other analyzers in the framework. Thanks to this approach, Frama-C can provide a number of sophisticated tools such as a concurrency safety analysis (Mthread), an enforcer of secure information flow (SecureFlow), or a set of tools for various test coverage criteria (LTest), among many others.
-### Example of usage:
+## Example of use:
+- first, with the frama-c interactive version opened, you can access your original source code with the options at the top left corner and run the tests with the EVA plugin. Just like the image below. ⬇️
+ ![example](extras/imgs/frama-cExample1.png)
+- you can see that your code is displayed at the right corner of the screen, which cannot be modified, you need to reach the option in the right side of where you went to put the modified code in the tool.
+- the below section shows you the messages of the analysis and other properties. 
+- here is a example of my code which was improved by the analysis of the tool, which i discovered that the variables of my code were reaching overflow. I solved the problem typing them to unsigned long long. [you can see it here](./tests/test1.c)
+    ```
+    void readln(char *str) {
+        fgets(str, 100, stdin); // lê até 100 caracteres da entrada padrão (teclado) e armazena em 'str'
+        if (str[strlen(str) - 1] == '\n') // verifica se a última letra é um caractere de nova linha
+            str[strlen(str) - 1] = '\0'; // se sim, substitui por um caractere nulo
+    }
+
+    int main() {
+        char n[100];
+        readln(n);
+        int i = 1;
+        unsigned long long sum = 0; // utilizamos o tipo de dados unsigned long long para evitar overflow em sum
+        unsigned long long product = 1; // msm caso de sum
+        int num = atoi(n);
+        while (i <= num) {
+            sum = sum + i;
+            product = product * i;
+            i = i + 1;
+            printf("soma: %llu \n", sum); // utilizamos o especificador de formato %llu para imprimir valores unsigned long long
+            printf("produto: %llu \n", product); 
+        }
+        return 0;
+    }
+    ```
