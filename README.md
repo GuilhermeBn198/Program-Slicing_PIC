@@ -93,3 +93,5 @@ The collaborative approach of Frama-C allows analyzers to build upon the results
         return 0;
     }
     ```
+
+## example of use(command line tool):
