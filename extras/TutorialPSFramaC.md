@@ -81,4 +81,4 @@ Quando a instalação estiver concluída, você pode testar o Frama-C com o segu
 frama-c-gui
 ```
 
-Isso iniciará a interface gráfica do Frama-C, onde você pode começar a trabalhar com a ferramenta. 
+Isso iniciará a interface gráfica do Frama-C(interativo), onde você pode começar a trabalhar com a ferramenta. 

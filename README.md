@@ -7,7 +7,7 @@ All the data collected here is available in more details in the Master Thesis of
 ---
 ### TO DO 27/03~10/04:
 - [x] Instalar o Frama-C
-  - [x] tutorial de instação do programa concluído!
+  - [x] tutorial de instalação do programa concluído!
 - [x] Criar um tutorial de como usar https://frama-c.com/fc-plugins/slicing.html
     - [x] aprender a usar a ferramenta
     - [x] fazer testes
@@ -15,6 +15,10 @@ All the data collected here is available in more details in the Master Thesis of
   - [x] 1/3
   - [x] 2/3
   - [x] 3/3
+
+### TO DO 10/04~17/04:
+- [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing usando o Frama-C via linha de comando.
+- [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing SEM O USO DE SOFTWARE, para função e instrução como critério de corte.
 ---
 
 ## Program Slicing
@@ -59,7 +63,7 @@ Frama-C is an open-source extensible and collaborative platform dedicated to sou
 
 ## What it can do?
 The collaborative approach of Frama-C allows analyzers to build upon the results already computed by other analyzers in the framework. Thanks to this approach, Frama-C can provide a number of sophisticated tools such as a concurrency safety analysis (Mthread), an enforcer of secure information flow (SecureFlow), or a set of tools for various test coverage criteria (LTest), among many others.
-## Example of use:
+## Example of use(interactive mode):
 - first, with the frama-c interactive version opened, you can access your original source code with the options at the top left corner and run the tests with the EVA plugin. Just like the image below. ⬇️
  ![example](extras/imgs/frama-cExample1.png)
 - you can see that your code is displayed at the right corner of the screen, which cannot be modified, you need to reach the option in the right side of where you went to put the modified code in the tool.
