@@ -89,7 +89,7 @@ Here are some of the most important plugins:
 
 ---
 
-## New versions! [CLICK ME](./extras/informacoesimportantes.md) (pt-br)
-## Tutorial for frama-c installation: [CLICK ME!](./extras/TutorialPSFramaC.md)
+## New versions! [CLICK ME](./extras/NewVersions.md) (pt-br)
+## Tutorial for frama-c installation: [CLICK ME!](./extras/TutorialFramaC.md)
 ## Example of use(interactive mode): [CLICK ME!](./extras/exampleOfInteractivemode.md)
 ## example of use(command line tool): [CLICK ME!](./extras/exampleOfCLIMode.md)

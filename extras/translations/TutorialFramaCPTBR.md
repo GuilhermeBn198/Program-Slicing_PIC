@@ -1,6 +1,6 @@
-# Tutorial de instalação da ferramenta de verificação de software Frama-C (2023)
+# Tutorial de instalação da ferramenta de verificação de software Frama-C 26 (2023)
 
-## Instalação:
+## **Instalação:**
 ## Linux
 ### basta realizar o mesmo procedimento feito na operação do Windows.
 ---
@@ -85,4 +85,4 @@ Isso iniciará a interface gráfica do Frama-C(interativo), onde você pode come
 
 ---
 
-## to go back to the previous page: [Click me!](../README.md)
+## to go back to the previous page: [Click me!](../TutorialFramaC.md)
