@@ -1,5 +1,5 @@
 # Map2Check – An Approach to Verifying Programs with Loops Using Program Slicing.
-    Oriented by Herbert Rocha
+Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
     
 [Versão Pt-Br!](./extras/translations/READMEptbr.md)
 
