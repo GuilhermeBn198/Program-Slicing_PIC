@@ -1,4 +1,4 @@
-# Map2Check – Uma Abordagem para Verificação de Programas com Loops usando Program Slicing.
+# Map2Check – An Approach to Verifying Programs with Loops Using Program Slicing.
     Oriented by Herbert Rocha
     
     
@@ -6,19 +6,21 @@ All the data collected here is available in more details in the Master Thesis of
 
 ---
 ### TO DO 27/03~10/04:
-- [x] Instalar o Frama-C
-  - [x] tutorial de instalação do programa concluído!
-- [x] Criar um tutorial de como usar https://frama-c.com/fc-plugins/slicing.html
-    - [x] aprender a usar a ferramenta
-    - [x] fazer testes
-- [x] Ler o Capitulo 2 da Tese sobre program slicing
+- [x] Install Frama-C
+  - [x] Installation tutorial of the program completed!
+- [x] Create a tutorial on how to use https://frama-c.com/fc-plugins/slicing.html
+    - [x] Learn how to use the tool
+    - [x] Perform tests
+- [x] Read Chapter 2 of the Thesis on program slicing
   - [x] 1/3
   - [x] 2/3
   - [x] 3/3
 
 ### TO DO 10/04~17/04:
-- [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing usando o Frama-C via linha de comando.
-- [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing SEM O USO DE SOFTWARE, para função e instrução como critério de corte.
+- [ ] Present an example with slides of what program slicing is and how to execute it using Frama-C via command line.
+  - [x] (EXTRA!) present an example of program slicing with frama-c GUI
+- [ ] Present an example with slides of what program slicing is and how to execute it WITHOUT USING SOFTWARE, for function and instruction as a cutting criterion.
+- [x] (EXTRA!) add pt-br support to the repository.
 ---
 
 ## Program Slicing
