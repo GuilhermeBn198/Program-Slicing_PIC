@@ -18,7 +18,7 @@
     int main() {
         char n[100];
         readln(n);
-        int i = 1;
+        unsigned long long i = 1;
         unsigned long long sum = 0; // utilizamos o tipo de dados unsigned long long para evitar overflow em sum
         unsigned long long product = 1; // msm caso de sum
         int num = atoi(n);
@@ -36,7 +36,18 @@
 ---
 
 # slicing code
-- now that we had analised the code above we will start some slicing tests for different conditions.
-  - a
+- After performing the initial analysis with EVA, we will start the steps to perform code slicing:
+
+- In this case, we will slice everything related to the "sum" variable's printf:
+  ![Initial code](../extras/imgs/slicingcodigoGUI1.png)
+
+- To do this, we need to select the printf statement on line 22, which is where the "sum" variable is being used. After that, right-click on it and hover over "Slicing." Then, click on "Slice calls to," which means that it will slice everything related to the call of this function.
+
+- After that, we can see the result:
+  ![Sliced code](../extras/imgs/slicingcodigoGUI2.png)
+
+- frama-c sliced the parts of the code which doesn't relate to the 'sum' variable.
+
+
 
 ## to go back to the previous page: [Click me!](../README.md)
