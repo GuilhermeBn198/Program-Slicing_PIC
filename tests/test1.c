@@ -11,7 +11,7 @@ void readln(char *str) {
 int main() {
     char n[100];
     readln(n);
-    int i = 1;
+    unsigned long long i = 1;
     unsigned long long sum = 0; // utilizamos o tipo de dados unsigned long long para evitar overflow em sum
     unsigned long long product = 1; // msm caso de sum
     int num = atoi(n);
