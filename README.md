@@ -2,7 +2,7 @@
     Oriented by Herbert Rocha
     
     
-All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./initial%20slides/thesis_PIBIC.pdf) and the user-manual from Frama-c platform. [Click here to see it!](./initial%20slides/frama-c-user_manual.pdf) you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html)
+All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./materials/thesis_PIBIC.pdf) and the user-manual from Frama-c platform. [Click here to see it!](./materials/frama-c-user-manual.pdf) you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html)
 
 ---
 ### TO DO 27/03~10/04:
@@ -90,6 +90,6 @@ Here are some of the most important plugins:
 ---
 
 ## New versions! [CLICK ME](./extras/informacoesimportantes.md) (pt-br)
-## Tutorial for installation: [CLICK ME!](./extras/TutorialPSFramaC.md)
+## Tutorial for frama-c installation: [CLICK ME!](./extras/TutorialPSFramaC.md)
 ## Example of use(interactive mode): [CLICK ME!](./extras/exampleOfInteractivemode.md)
 ## example of use(command line tool): [CLICK ME!](./extras/exampleOfCLIMode.md)
