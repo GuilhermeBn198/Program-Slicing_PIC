@@ -1,3 +1,0 @@
-main() <int main () at test3.c:8>:
-    foo() <int foo (int x) at test3.c:3>
-    printf()
