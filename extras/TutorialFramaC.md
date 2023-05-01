@@ -3,19 +3,22 @@
 [Versão Pt-Br!](./translations/TutorialFramaCPTBR.md)
 
 ## **Installation:**
+
 ## Linux
+
 ### Simply follow the same procedure as the one done on Windows.
+
 ---
 
 ## Windows (WSL Ubuntu)
-   
+
 ### 1. Open a terminal in your WSL Ubuntu.
+
 ### 2. Run the following command to update the package list:
 
 ```
 	sudo apt-get update
 ```
-
 
 ### 3. Then, run the following command to install the required dependencies:
 
@@ -46,14 +49,17 @@ These commands initialize the OPAM package manager, configure a specific version
 ---
 
 ## Mac OS
+
 ### 1. Install Homebrew
-- Open a terminal on your macOS system and run the following command to install the Homebrew package manager:
+
+-   Open a terminal on your macOS system and run the following command to install the Homebrew package manager:
 
 ```
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### 2. Install Required Dependencies
+
 Run the following command to install the required dependencies:
 
 ```
@@ -61,6 +67,7 @@ Run the following command to install the required dependencies:
 ```
 
 ### 3. Configure OPAM
+
 Run the following commands to configure OPAM:
 
 ```
@@ -71,6 +78,7 @@ Run the following commands to configure OPAM:
 ```
 
 ### 4. Install Frama-C
+
 Run the following command to install Frama-C:
 
 ```
@@ -78,6 +86,7 @@ Run the following command to install Frama-C:
 ```
 
 ### 5. Test Frama-C
+
 When the installation is complete, you can test Frama-C with the following command:
 
 ```

@@ -1,13 +1,17 @@
 # Tutorial de instalação da ferramenta de verificação de software Frama-C 26 (2023)
 
 ## **Instalação:**
+
 ## Linux
+
 ### basta realizar o mesmo procedimento feito na operação do Windows.
+
 ---
+
 ## Windows(WSL Ubuntu)
-   
 
 ### 1 - Abra um terminal no seu WSL Ubuntu.
+
 ### 2 - Execute o seguinte comando para atualizar a lista de pacotes:
 
 ```
@@ -32,7 +36,6 @@ opam install frama-c
 
 #### Estes comandos inicializam o gerenciador de pacotes OPAM, configuram uma versão específica do OCaml (4.12.0), atualiza o OPAM, e em seguida, instala o Frama-C. <br><br>
 
-
 ### 5 - Quando a instalação estiver concluída, você pode testar o Frama-C com o seguinte comando:
 
 ```
@@ -42,8 +45,11 @@ frama-c-gui
 ### Isso iniciará a interface gráfica do Frama-C, onde você pode começar a trabalhar com a ferramenta.
 
 ---
+
 ## Mac OS
+
 ### 1. Instalar o Homebrew
+
 Abra um terminal no seu sistema macOS e execute o seguinte comando para instalar o gerenciador de pacotes Homebrew:
 
 ```
@@ -51,6 +57,7 @@ Abra um terminal no seu sistema macOS e execute o seguinte comando para instalar
 ```
 
 ### 2. Instalar as dependências necessárias
+
 Execute o seguinte comando para instalar as dependências necessárias:
 
 ```
@@ -58,6 +65,7 @@ brew install opam ocaml-findlib gtk+ gtk-mac-integration sqlite3 gmp
 ```
 
 ### 3. Configurar o OPAM
+
 Execute o seguinte comando para configurar o OPAM:
 
 ```
@@ -68,6 +76,7 @@ opam update
 ```
 
 ### 4. Instalar o Frama-C
+
 Execute o seguinte comando para instalar o Frama-C:
 
 ```
@@ -75,13 +84,14 @@ opam install frama-c
 ```
 
 ### 5. Testar o Frama-C
+
 Quando a instalação estiver concluída, você pode testar o Frama-C com o seguinte comando:
 
 ```
 frama-c-gui
 ```
 
-Isso iniciará a interface gráfica do Frama-C(interativo), onde você pode começar a trabalhar com a ferramenta. 
+Isso iniciará a interface gráfica do Frama-C(interativo), onde você pode começar a trabalhar com a ferramenta.
 
 ---
 
