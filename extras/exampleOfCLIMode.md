@@ -23,6 +23,26 @@ Several of these options can be used simultaneously to specify a complex slicing
 
 ## now, for some examples we'll take the same code we used in the interactive version demonstration: [click here to see it](../tests/test1.c)
 
+### testing commands:
+
+      frama-c loop_simple.i -deps -slice-return main -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c -then ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c  -no-deps
+
+      frama-c test2.c -deps -slice-calls sum,mult -slice-value x,y  -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c -then ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c  -no-deps
+
+#### explicando o código:
+
+- frama-c: comando principal do Frama-C.
+- test2.c: nome do arquivo de código-fonte C que será analisado.
+- deps: gera a dependência entre funções.
+- slice-calls sum,mult: define quais funções devem ser tratadas como chamadas de função que afetam o resultado do slicing.
+- slice-value x,y: define quais variáveis devem ser incluídas no slicing, nesse caso, são as variáveis x e y.
+- then-on 'Slicing export': exporta o resultado do slicing.
+- set-project-as-default: torna o projeto padrão para as próximas análises.
+- print: imprime informações de depuração.
+- ocode ./ocode*@PTEST_NUMBER@*@PTEST_NAME@.c: salva o código-fonte C de saída gerado pelo Frama-C.
+- then ./ocode*@PTEST_NUMBER@*@PTEST_NAME@.c: analisa o código-fonte C gerado com outras ferramentas do Frama-C.
+- no-deps: não gera a dependência entre funções no final da análise.
+
 ---
 
 ## to go back to the previous page: [Click me!](../README.md)
