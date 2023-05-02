@@ -15,6 +15,5 @@ int main() {
   sum(x, y);
   printf(mult(x, y));
   printf(sum(x, z));
-  mult(z, y);
-  return 0;
+  return x;
 }
