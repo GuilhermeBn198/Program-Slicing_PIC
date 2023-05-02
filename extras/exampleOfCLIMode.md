@@ -58,6 +58,7 @@
         }
         ```
 - -slice-wr v1,...,vn: Selects the write accesses to the left-hand side values v1,…,vn.
+  - this command is related to the moment the variable is "written" in the code, like ```int x = 10;```
 - -slice-rd v1,...,vn: Selects the read accesses to the left-hand side values v1,…,vn.
 - Slicing criteria can also be specified in the source code using slicing pragmas and the following command line option:
 - -slice-pragma f1,...,fn: Uses slicing pragmas in the code of functions f1,…,fn as slicing criteria.
