@@ -39,7 +39,6 @@ Todos os dados coletados aqui estão disponíveis em mais detalhes na Tese de Me
 ## Program Slicing
 
 ### O que é?
-
 É um termo usado em diversas técnicas para decompor um programa com base em informações de fluxo de dados. Ele extrai declarações de um programa que são relevantes para o comportamento do programa em relação a certos critérios.
 
 ### Podemos dividir o slicing de programas em duas categorias:

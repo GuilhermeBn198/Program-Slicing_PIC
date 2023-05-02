@@ -40,7 +40,7 @@ These commands initialize the OPAM package manager, configure a specific version
 
 ### 5. When the installation is complete, you can test Frama-C with the following command:
 
-```
+```bash
 	frama-c-gui
 ```
 
@@ -54,7 +54,7 @@ These commands initialize the OPAM package manager, configure a specific version
 
 -   Open a terminal on your macOS system and run the following command to install the Homebrew package manager:
 
-```
+```bash
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -62,7 +62,7 @@ These commands initialize the OPAM package manager, configure a specific version
 
 Run the following command to install the required dependencies:
 
-```
+```bash
 	brew install opam ocaml-findlib gtk+ gtk-mac-integration sqlite3 gmp
 ```
 
@@ -70,7 +70,7 @@ Run the following command to install the required dependencies:
 
 Run the following commands to configure OPAM:
 
-```
+```bash
 	opam init --disable-sandboxing
 	opam switch create 4.12.0
 	eval $(opam env)
@@ -81,7 +81,7 @@ Run the following commands to configure OPAM:
 
 Run the following command to install Frama-C:
 
-```
+```bash
 	opam install frama-c
 ```
 
@@ -89,7 +89,7 @@ Run the following command to install Frama-C:
 
 When the installation is complete, you can test Frama-C with the following command:
 
-```
+```bash
 	frama-c-gui
 ```
 
