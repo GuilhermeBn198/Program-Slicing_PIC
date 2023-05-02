@@ -39,6 +39,7 @@
     -   Note that we can also use the slice-calls option with other functions besides main(), and we can specify multiple functions separated by commas.
 
 -   **-slice-return f1,...,fn: Selects the result (returned value) of functions f1,…,fn.**
+    -   aaa
 -   **-slice-value v1,...,vn: Selects the result of the values on the left-hand side v1,…,vn at the end of the function given as an entry point.**
 
     -   The -slice-value option in Frama-C allows you to specify which variables in the code you want to include in the slicing criteria.
@@ -64,7 +65,13 @@
 -   **-slice-wr v1,...,vn: Selects the write accesses to the left-hand side values v1,…,vn.**
     -   this command is related to the moment the variable is "written" in the code, like ```int x = 10;```
 -   **-slice-rd v1,...,vn: Selects the read accesses to the left-hand side values v1,…,vn.**
-    -   a
+    -   if we run the command:
+    
+        ```bash
+        frama-c ./test5.c -deps -main main -slice-calls foo,bar -slice-wr x -slice-rd y -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./sliced_test5.c -then ./sliced_test5.c -no-deps
+        ```
+    - we are telling Frama-C to slice the program based on calls to the foo and bar functions, as well as on writes to the variable x and reads from the variable y. 
+    -   The resulting slice would include only the statements that affect the values of x and y, which in this case are the assignments ```x = foo(a)``` and ```y = bar(b)```.
 -   Slicing criteria can also be specified in the source code using slicing pragmas and the following command line option:
     -   **-slice-pragma f1,...,fn: Uses slicing pragmas in the code of functions f1,…,fn as slicing criteria.**
     -   In addition, slicing criteria can be relative to ACSL annotations. In this case, the Slicing plugin ensures that if a property is verified by the sliced code, this implies that the corresponding property is satisfied by the initial code. The command line options related to this feature are:
