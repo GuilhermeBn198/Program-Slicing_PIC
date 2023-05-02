@@ -8,11 +8,13 @@ int foo_slice_1(int x)
   return __retres;
 }
 
-void main(void)
+int main(void)
 {
+  int __retres;
   int a = 10;
   int c = foo_slice_1(a);
-  return;
+  __retres = 0;
+  return __retres;
 }
 
 
@@ -28,11 +30,13 @@ int foo_slice_1(int x)
   return __retres;
 }
 
-void main(void)
+int main(void)
 {
+  int __retres;
   int a = 10;
   int c = foo_slice_1(a);
-  return;
+  __retres = 0;
+  return __retres;
 }
 
 

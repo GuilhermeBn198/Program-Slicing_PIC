@@ -126,9 +126,9 @@ Aqui estão alguns dos principais plugins do Frama-c:
 
 ## Tutorial Para frama-c instalação: [CLIQUE AQUI](./TutorialFramaCPTBR.md)
 
-## Exemplo de uso(Modo Interativo-GUI-): [CLIQUE AQUI](../exampleOfInteractivemode.md) (en)
+## Exemplo de uso(Modo Interativo-GUI): [CLIQUE AQUI](./exemploModoInterativo.md.md)
 
-## Exemplo de uso(Modo de Linha de Comando-CLI-): [CLIQUE AQUI](./exampleOfCLIMode.md) (en)
+## Exemplo de uso(Modo de Linha de Comando-CLI): [CLIQUE AQUI](./exemploModoCLI.md.md)
 
 ---
 

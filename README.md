@@ -22,7 +22,7 @@ All the data collected here is available in more details in the Master Thesis of
 
 ### TO DO 10/04~17/04:
 
--   [ ] Present an example with slides of what program slicing is and how to execute it using Frama-C via command line.
+-   [x] Present an example with slides of what program slicing is and how to execute it using Frama-C via command line.
     -   [x] (EXTRA!) present an example of program slicing with frama-c GUI
 -   [ ] Present an example with slides of what program slicing is and how to execute it WITHOUT USING SOFTWARE, for function and instruction as a cutting criterion.
 -   [x] (EXTRA!) add pt-br support to the repository.

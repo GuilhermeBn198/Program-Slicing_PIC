@@ -1,6 +1,7 @@
 # Command Line Mode
 
 ## first some explanations about the slicing plugin and its parameters:
+
 <br>
 
 ### The Frama-C Slicing plugin offers several command line options to specify slicing criteria. Here are some of the available options:
@@ -31,6 +32,7 @@
         ```
 
     -   If we want to slice the program based on the value of c, we can use the slice-calls option with main() and specify foo() and bar() as the relevant function calls:
+
         ```bash
         frama-c ./test5.c -deps -main main -slice-calls main,foo,bar -slice-value c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./test5.c -then ./test5.c -no-deps
         ```
@@ -39,7 +41,32 @@
     -   Note that we can also use the slice-calls option with other functions besides main(), and we can specify multiple functions separated by commas.
 
 -   **-slice-return f1,...,fn: Selects the result (returned value) of functions f1,…,fn.**
-    -   aaa
+    -   The option -slice-return defines the code slicing criterion based on the dependency between the input variables and the output variable of the specified function.
+    -   see the example of code which we'll be exemplifying here:
+        ```bash
+        #include <stdio.h>
+        int sum(int x, int y) { return (x + y); }
+
+        int mult(int x, int y) { return (x * y); }
+
+        int main() {
+        int a = 0;
+        int b = 1;
+        int c = 2;
+
+        printf("x: %d\n", a);
+        printf("y: %d\n", b);
+        printf("z: %d\n", c);
+        sum(a, b);
+        printf(mult(a,b));
+        printf(sum(b, c));
+        return 0;
+        }
+        ```
+    - In this case, since the main() function does not return any value, we can define the output variable as the variable "c" that is printed on line 8.
+        ```bash
+        frama-c ./test5.c -deps -main main -slice-return main -slice-value c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./sliced_test5.c -then ./sliced_test5.c -no-deps
+        ``` 
 -   **-slice-value v1,...,vn: Selects the result of the values on the left-hand side v1,…,vn at the end of the function given as an entry point.**
 
     -   The -slice-value option in Frama-C allows you to specify which variables in the code you want to include in the slicing criteria.
@@ -49,6 +76,7 @@
         frama-c ./test5.c -deps -main main -slice-calls foo,bar -slice-value a,c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./sliced_test5.c -then ./sliced_test5.c -no-deps
     -   This command tells Frama-C to slice the program based on the calls to functions foo and bar, and only include variables a and c in the resulting slice. The -then-on 'Slicing export' option is used to export the resulting slice, and -ocode sliced.c is used to save the sliced program to a file named sliced.c.
     -   After running this command, Frama-C generates a sliced version of the program that only includes the statements relevant to the variables a and c. The resulting sliced code would look like this:
+
         ```bash
         int foo(int x) {
             return x + 1;
@@ -63,15 +91,31 @@
         ```
 
 -   **-slice-wr v1,...,vn: Selects the write accesses to the left-hand side values v1,…,vn.**
-    -   this command is related to the moment the variable is "written" in the code, like ```int x = 10;```
--   **-slice-rd v1,...,vn: Selects the read accesses to the left-hand side values v1,…,vn.**
+    -   this command is related to the moment the variable is "written" in the code, like `int x = 10;`
+-   **-slice-rd v1,...,vn: Selects the read accesses to the left-hand side values v1,…,vn.** 
     -   if we run the command:
-    
-        ```bash
-        frama-c ./test5.c -deps -main main -slice-calls foo,bar -slice-wr x -slice-rd y -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./sliced_test5.c -then ./sliced_test5.c -no-deps
-        ```
-    - we are telling Frama-C to slice the program based on calls to the foo and bar functions, as well as on writes to the variable x and reads from the variable y. 
-    -   The resulting slice would include only the statements that affect the values of x and y, which in this case are the assignments ```x = foo(a)``` and ```y = bar(b)```.
+            ```bash
+            frama-c ./test5.c -deps -main main -slice-calls foo,bar -slice-wr x -slice-rd y -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./sliced_test5.c -then ./sliced_test5.c -no-deps
+            ```
+        - we are telling Frama-C to slice the program based on calls to the foo and bar functions, as well as on writes to the variable x and reads from the variable y.
+        -   The resulting slice would include only the statements that affect the values of x and y, which in this case are the assignments ```x = foo(a)``` and ```y = bar(b)```.
+        
+            ```bash
+            int foo_slice_1(int x)
+            {
+                int **retres;
+                **retres = x + 1;
+                return \_\_retres;
+            }
+
+            void main(void)
+            {
+                int a = 10;
+                int c = foo_slice_1(a);
+                return;
+            }
+            ```
+
 -   Slicing criteria can also be specified in the source code using slicing pragmas and the following command line option:
     -   **-slice-pragma f1,...,fn: Uses slicing pragmas in the code of functions f1,…,fn as slicing criteria.**
     -   In addition, slicing criteria can be relative to ACSL annotations. In this case, the Slicing plugin ensures that if a property is verified by the sliced code, this implies that the corresponding property is satisfied by the initial code. The command line options related to this feature are:
