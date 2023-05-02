@@ -9,29 +9,28 @@
     -   The slice-calls option in Frama-C allows the user to specify which function calls should be included in the slicing. When used with the main() function, it specifies that all function calls within main() that affect the slicing criteria should be included.
 
     -   For example, if we have a program with multiple function calls within main(), we can use the slice-calls option to include only the relevant function calls in the slicing. Suppose we have a program like the following:
+            #include <stdio.h>
 
-        ```
-        #include <stdio.h>
+            int foo(int x) {
+            return x + 1;
+            }
 
-        int foo(int x) {
-        return x + 1;
-        }
+            int bar(int y) {
+            return y * 2;
+            }
 
-        int bar(int y) {
-        return y * 2;
-        }
-
-        int main() {
-        int a = 10;
-        int b = 20;
-        int c = foo(a)
-        printf("%d\n", c);
-        return 0;
-        }
-        ```
+            int main() {
+            int a = 10;
+            int b = 20;
+            int c = foo(a)
+            printf("%d\n", c);
+            return 0;
+            }
 
     -   If we want to slice the program based on the value of c, we can use the slice-calls option with main() and specify foo() and bar() as the relevant function calls:
-        frama-c ./test5.c -deps -main main -slice-calls main,foo,bar -slice-value c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./test5.c -then ./test5.c -no-deps
+            
+            frama-c ./test5.c -deps -main main -slice-calls main,foo,bar -slice-value c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./test5.c -then ./test5.c -no-deps
+    
     -   This will generate a sliced program that includes only the relevant parts of main(), foo(), and bar() that affect the value of c.
     -   Note that we can also use the slice-calls option with other functions besides main(), and we can specify multiple functions separated by commas.
 
@@ -80,7 +79,7 @@ Several of these options can be used simultaneously to specify a complex slicing
 
       frama-c test2.c -deps -slice-calls sum,mult -slice-value x,y  -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c -then ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c  -no-deps
 
-      frama-c ./test4.c -deps -main main -slice-return sum -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c -then ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c  -no-deps
+      frama-c ./test4.c -deps -main main -slice-return sum -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./sliced_test4_returnSum.c -then ./sliced_test4_returnSum.c  -no-deps
 
       frama-c ./test5.c -deps -main main -slice-calls main,foo,bar -slice-value c -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./test5.c -then ./test5.c  -no-deps
 
@@ -102,4 +101,3 @@ of -then). <br>
 ---
 
 ## to go back to the previous page: [Click me!](../README.md)
-```
