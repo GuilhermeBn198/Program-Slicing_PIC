@@ -20,7 +20,7 @@ Todos os dados coletados aqui estão disponíveis em mais detalhes na Tese de Me
 
 ### TO DO 10/04~17/04:
 
--   [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing usando o Frama-C via linha de comando.
+-   [x] Apresentar um exemplo com slides do que consiste e como executar o program slicing usando o Frama-C via linha de comando.
     -   [x] (EXTRA) apresentar exemplo de slicing de código com o Frama-C GUI!
 -   [ ] Apresentar um exemplo com slides do que consiste e como executar o program slicing SEM O USO DE SOFTWARE, para função e instrução como critério de corte.
     -   [x] (EXTRA) adicionar suporte ao pt-br
