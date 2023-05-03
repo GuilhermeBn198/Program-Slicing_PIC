@@ -27,6 +27,23 @@ All the data collected here is available in more details in the Master Thesis of
 -   [ ] Present an example with slides of what program slicing is and how to execute it WITHOUT USING SOFTWARE, for function and instruction as a cutting criterion.
 -   [x] (EXTRA!) add pt-br support to the repository.
 
+### TO DO 03/05~10/05
+- [ ] complete the documentation for -slice-assert, -slice-pragma, 
+- [ ] study more about **-slice-assert**, **-slice-pragma**, -slice-return, -slice-calls
+- [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
+  - [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
+    - [ ] 1/5
+    - [ ] 2/5
+    - [ ] 3/5
+    - [ ] 4/5
+    - [ ] 5/5
+- [ ] test the output of frama-c combined with **esbmc.org** <- COMPLEX!
+  - [ ] 1/5
+  - [ ] 2/5
+  - [ ] 3/5
+  - [ ] 4/5
+  - [ ] 5/5
+
 ---
 
 ## Program Slicing
