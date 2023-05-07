@@ -1,14 +1,16 @@
-# Map2Check – An Approach to Verifying Programs with Loops Using Program Slicing.
+# **Map2Check – An Approach to Verifying Programs with Loops Using Program Slicing.**
 
 Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 [Versão Pt-Br!](./extras/translations/READMEptbr.md)
 
-All the data collected here is available in more details in the Master Thesis of Marek Chalupa. [Click here to see it!](./materials/thesis_PIBIC.pdf) and the user-manual from Frama-c platform. [Click here to see it!](./materials/frama-c-user-manual.pdf) you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html)
+**All the data collected here is available in more details** in the Master Thesis of Marek Chalupa [Click here to see it!](./materials/thesis_PIBIC.pdf), the user-manual from Frama-c platform [Frama-c general User Manual(EN)!](./materials/frama-c-user-manual.pdf) and [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf). you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html).
+
 
 ---
 
-### TO DO 27/03~10/04:
+## **TO DO:**
+### 27/03~10/04:
 
 -   [x] Install Frama-C
     -   [x] Installation tutorial of the program completed!
@@ -20,14 +22,14 @@ All the data collected here is available in more details in the Master Thesis of
     -   [x] 2/3
     -   [x] 3/3
 
-### TO DO 10/04~17/04:
+### 10/04~17/04:
 
 -   [x] Present an example with slides of what program slicing is and how to execute it using Frama-C via command line.
     -   [x] (EXTRA!) present an example of program slicing with frama-c GUI
 -   [ ] Present an example with slides of what program slicing is and how to execute it WITHOUT USING SOFTWARE, for function and instruction as a cutting criterion.
 -   [x] (EXTRA!) add pt-br support to the repository.
 
-### TO DO 03/05~10/05
+### 03/05~10/05
 - [ ] complete the documentation for -slice-assert, -slice-pragma, 
 - [ ] study more about **-slice-assert**, **-slice-pragma**, -slice-return, -slice-calls
 - [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
@@ -44,22 +46,35 @@ All the data collected here is available in more details in the Master Thesis of
   - [ ] 4/5
   - [ ] 5/5
 
----
 
-## Program Slicing
+# **Program Slicing**
 
-### What is it?
+## What is it?
 
 It's a term used in several techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria.
 
-### We can divide program slicing into two categories:
+## Some definitions:
 
-1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
-2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
+## What is a slice?
+- **Definition by Weiser:**
+    
+    The original program and the transformed program must be identical when observed through the window defined by the slicing criterion, defined by a program point and a list of variables. This means that the sequence of values observed for these variables at this point must be the same. In addition, the transformed program must be obtained by suppressing some instructions from the original program.
 
-### Some definitions:
+    This definition was later challenged on the grounds that it is not sufficient to convey the intuitive understanding that we have of slicing. 
+    
+    example:
+    |    P    |          P1        |          P2        |
+    |:-------:|:------------------:|:------------------:|
+    | a = 1   |                    |      a = 1         |
+    | b = 3   |                    |      b = 3         |
+    | c = a*b |                    |                    |
+    | a = 2   |      a = 2         |                    |
+    | b = 2   |      b = 2         |                    |
+    | d = a+b |      d = a+b       |      d = a+b       |
 
--   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N ×N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 iff n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
+    P1 is probably what we expect from the slicing of P if we are interested in the variable d after the last instruction, but P2 is also correct from Weiser's point of view. Which is ambiguous. It seems unlikely to construct an algorithm that builds P2, but we can still see that the definition is insufficient to fully specify what the result of a slicing should be.
+- Definition by 
+-   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N × N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 if n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
     <br>
     <br>
 -   Definition 2. Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG
@@ -76,7 +91,11 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
     a program and its cfg
 
-<br>
+### We can divide program slicing into two categories:
+
+1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
+2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
+
 
 ### There are 3 different aproaches we can do to slice a program:
 
@@ -86,7 +105,7 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
 -   Slicing with pointers and Unstructured control flow: now we can slice programs with pointers and interprocedural control flow.
 
-# FRAMA-C
+# **FRAMA-C**
 
 ## What is it?
 
