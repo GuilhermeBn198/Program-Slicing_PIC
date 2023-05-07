@@ -30,7 +30,8 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 -   [x] (EXTRA!) add pt-br support to the repository.
 
 ### 03/05~10/05
-- [ ] complete the documentation for -slice-assert, -slice-pragma, 
+- [ ] complete the documentation for -slice-assert, -slice-pragma
+  - [x] (EXTRA!) enhance the documentation for definitions of slices 
 - [ ] study more about **-slice-assert**, **-slice-pragma**, -slice-return, -slice-calls
 - [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
   - [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
@@ -53,8 +54,7 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 It's a term used in several techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria.
 
-## Some definitions:
-
+## **Some definitions:**
 ## What is a slice?
 - **Definition by Weiser:**
     
@@ -73,7 +73,14 @@ It's a term used in several techniques to decompose a program based on data-flow
     | d = a+b |      d = a+b       |      d = a+b       |
 
     P1 is probably what we expect from the slicing of P if we are interested in the variable d after the last instruction, but P2 is also correct from Weiser's point of view. Which is ambiguous. It seems unlikely to construct an algorithm that builds P2, but we can still see that the definition is insufficient to fully specify what the result of a slicing should be.
-- Definition by 
+    
+    the formalization of the definition is:
+    
+    ![formalization](extras/imgs/formalization_of_slice.png)
+    
+    Even though this definition has the same drawbacks as the original one, it allows for correctness proofs of its algorithms relative to this formalization.
+
+## Control Flow Graph(CFG)
 -   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N × N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 if n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
     <br>
     <br>
