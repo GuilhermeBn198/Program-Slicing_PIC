@@ -80,6 +80,14 @@ It's a term used in several techniques to decompose a program based on data-flow
     
     Even though this definition has the same drawbacks as the original one, it allows for correctness proofs of its algorithms relative to this formalization.
 
+## Dependency Graphs
+ - PDG (Program Dependence Graph). Such a graph is used to represent the various dependencies between the instructions in a program. They exploit it to calculate a non-executable slicing that only concerns instructions that influence the value of variables, but this representation will also be used to calculate an executable slicing.  
+  
+    ```
+    A slice of a program with respect to program point p and variable x consists of a set of statements of the program that might affect the value of x at p.
+    ```
+ - However, she specifies that x must be defined or used in p. Indeed, when the graph is constructed, the slicing reduces to an accessibility problem to a node, where a node represents a program point and contains only the relationships concerning the variables that appear there. This limitation can be overcome by maintaining a correspondence between the data at a program point and the nodes of the graph.
+
 ## Control Flow Graph(CFG)
 -   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N × N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 if n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
     <br>
