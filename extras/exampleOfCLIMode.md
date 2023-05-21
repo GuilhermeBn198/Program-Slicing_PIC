@@ -160,6 +160,12 @@
         }
         ```
 
+    -   if we use the command:
+        ```bash
+        frama-c -slice-assert main test6.c -then-on 'Slicing export' -set-project-as-default -print -ocode ./sliced_test6_assert1.c
+        ```
+    -   we can see that frama-c took the `c //@ assert(b >= 0);` parameter inside the code in the declaration of main function, where we choose the assertion of b in the code
+
 -   **-slice-loop-inv f1,...,fn: Selects the loop invariants of functions f1,…,fn.**
 
 -   **-slice-loop-var f1,...,fn: Selects the loop variants of functions f1,…,fn.**
