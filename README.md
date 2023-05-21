@@ -169,4 +169,4 @@ Here are some of the most important plugins:
 
 ## Example of use(interactive mode): [CLICK ME!](./extras/exampleOfInteractivemode.md)
 
-## example of use(command line tool): [CLICK ME!](./extras/exampleOfCLIMode.md)
+## Example of use and documentation of slicing tools(command line tool): [CLICK ME!](./extras/exampleOfCLIMode.md)
