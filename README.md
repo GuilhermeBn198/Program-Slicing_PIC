@@ -40,30 +40,63 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
     -   [x] 3/4 slice-return
     -   [x] 4/4 slice-calls
 -   [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
--   [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
-    -   [x] 1/5
-    -   [ ] 2/5
-    -   [ ] 3/5
-    -   [ ] 4/5
-    -   [ ] 5/5
 -   [ ] test the output of frama-c combined with **esbmc.org** <- COMPLEX!
     -   [x] 1/5
     -   [ ] 2/5
     -   [ ] 3/5
     -   [ ] 4/5
     -   [ ] 5/5
--   [ ] Refactor all the repository, adding the new tools to the
+-   [ ] Refactor all the repository, adding the new tools to the README
     -   [x] Refactor documentation of frama-c
     -   [ ] Create documentation for esbmc
         -   [x] 1/4 what is it?
         -   [ ] 2/4 installation
         -   [ ] 3/4
         -   [ ] 4/4
-    -   [ ] Create documentation for pagai
-        -   [x] 1/4 what is it?
-        -   [x] 2/4 installation
-        -   [ ] 3/4
-        -   [ ] 4/4
+
+### 22/05~29/05
+
+-   [ ] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
+    -   [ ] 1/5
+    -   [ ] 2/5
+    -   [ ] 3/5
+    -   [ ] 4/5
+    -   [ ] 5/5
+-   [ ] Testar com várias opções do FRAMA-C
+    -   [ ] 1/5
+        -   [ ] 1/5
+        -   [ ] 2/5
+        -   [ ] 3/5
+        -   [ ] 4/5
+        -   [ ] 5/5
+    -   [ ] 2/5
+        -   [ ] 1/5
+        -   [ ] 2/5
+        -   [ ] 3/5
+        -   [ ] 4/5
+        -   [ ] 5/5
+    -   [ ] 3/5
+        -   [ ] 1/5
+        -   [ ] 2/5
+        -   [ ] 3/5
+        -   [ ] 4/5
+        -   [ ] 5/5
+    -   [ ] 4/5
+        -   [ ] 1/5
+        -   [ ] 2/5
+        -   [ ] 3/5
+        -   [ ] 4/5
+        -   [ ] 5/5
+    -   [ ] 5/5
+        -   [ ] 1/5
+        -   [ ] 2/5
+        -   [ ] 3/5
+        -   [ ] 4/5
+        -   [ ] 5/5
+-   [ ] Slice por localização no código
+-   [ ] Um exemplo de uso com ESBMC
+
+---
 
 ## **PROGRAM SLICING**
 
@@ -161,16 +194,6 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 ### **FRAMA-C Platform**
 
 #### [Click here to see the documentation](./extras/frama-c/FramacTool.md)
-
----
-
----
-
----
-
-### **PAGAI tool:**
-
-#### [Click here to see the documentation](./extras/pagai/PagaiTool.md)
 
 ---
 
