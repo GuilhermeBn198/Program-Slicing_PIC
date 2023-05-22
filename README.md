@@ -34,8 +34,10 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 -   [x] complete the documentation for -slice-assert, -slice-pragma
     -   [x] (EXTRA!) enhance the documentation for definitions of slices
 -   [ ] study more about **-slice-assert**, **-slice-pragma**, **-slice-return**, **-slice-calls**
-    -   [x] 1/2
-    -   [ ] 2/2
+    -   [x] 1/2 slice-assert
+    -   [ ] 2/2 slice-pragma
+    -   [x] 3/4 slice-return
+    -   [x] 4/4 slice-calls
 -   [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
 -   [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
     -   [ ] 1/5

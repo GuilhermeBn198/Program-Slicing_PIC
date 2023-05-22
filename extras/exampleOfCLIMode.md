@@ -178,7 +178,7 @@
 -   In this code, we have added a slicing pragma "keep_addition" before the addition operation. Now, if you want to slice the code while preserving the addition operation, you can use the -slice-pragma option with Frama-C:
 
     ```bash
-    frama-c -slice-pragma keep_addition my_source_code.c -then-on 'Slicing export' -print
+    frama-c -slice-pragma keep_addition .c -then-on 'Slicing export' -print
     ```
 
 -   The resulting sliced code will preserve the addition operation and remove the multiplication operation:
