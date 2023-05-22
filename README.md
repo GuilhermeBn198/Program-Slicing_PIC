@@ -8,9 +8,9 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 ---
 
-## **TO DO:**
+## **TO DO**:
 
-### 27/03~10/04:
+### **27/03~10/04**:
 
 -   [x] Install Frama-C
     -   [x] Installation tutorial of the program completed!
@@ -22,14 +22,14 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
     -   [x] 2/3
     -   [x] 3/3
 
-### 10/04~17/04:
+### **10/04~17/04**:
 
 -   [x] Present an example with slides of what program slicing is and how to execute it using Frama-C via command line.
     -   [x] (EXTRA!) present an example of program slicing with frama-c GUI
 -   [ ] Present an example with slides of what program slicing is and how to execute it WITHOUT USING SOFTWARE, for function and instruction as a cutting criterion.
 -   [x] (EXTRA!) add pt-br support to the repository.
 
-### 03/05~10/05
+### **03/05~10/05**:
 
 -   [x] complete the documentation for -slice-assert, -slice-pragma
     -   [x] (EXTRA!) enhance the documentation for types of slices in frama-c
@@ -54,7 +54,7 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
         -   [ ] 3/4
         -   [ ] 4/4
 
-### 22/05~29/05
+### **22/05~29/05**
 
 -   [ ] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
     -   [ ] 1/5
