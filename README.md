@@ -32,7 +32,8 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 ### 03/05~10/05
 
 -   [x] complete the documentation for -slice-assert, -slice-pragma
-    -   [x] (EXTRA!) enhance the documentation for definitions of slices
+    -   [x] (EXTRA!) enhance the documentation for types of slices in frama-c
+    -   [x] (EXTRA!) enhance the documentation for the definition of slices
 -   [ ] study more about **-slice-assert**, **-slice-pragma**, **-slice-return**, **-slice-calls**
     -   [x] 1/2 slice-assert
     -   [ ] 2/2 slice-pragma
@@ -40,19 +41,23 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
     -   [x] 4/4 slice-calls
 -   [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
 -   [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
-    -   [ ] 1/5
+    -   [x] 1/5
     -   [ ] 2/5
     -   [ ] 3/5
     -   [ ] 4/5
     -   [ ] 5/5
 -   [ ] test the output of frama-c combined with **esbmc.org** <- COMPLEX!
-    -   [ ] 1/5
+    -   [x] 1/5
     -   [ ] 2/5
     -   [ ] 3/5
     -   [ ] 4/5
     -   [ ] 5/5
+-   [ ] Refactor all the repository, adding the new tools to the
+    -   [x] Refactor documentation of frama-c
+    -   [ ] Create documentation for esbmc
+    -   [ ] Create documentation for pagai
 
-# **Program Slicing**
+# **PROGRAM SLICING**
 
 ## What is it?
 
@@ -98,22 +103,35 @@ It's a term used in several techniques to decompose a program based on data-flow
 
 ## Control Flow Graph(CFG)
 
--   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N × N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 if n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
-    <br>
-    <br>
--   Definition 2. Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG
+1. **Definition**: A control flow graph (`CFG`) of a program P is a `quintuple(N, E, 'ns', 'ne', L)`:
+    1. where `(N, E)` is a finite directed graph;
+    2. `N` is a set of nodes and `E ⊆ N × N` is a set of edges.
+    3. Each statement of P is represented by a node in the CFG and edges between nodes represent the `flow of control in P`:
+        1. there is an edge between nodes `n1` and `n2`
+        2. if `n2` can be executed immediately after `n1`.
+        3. There are distinguished `entry` and `exit` nodes in `N`, `'ns'` and `'ne'`, such that every node `N ∈ N` is reachable from `'ns'`, and `'ne'` is reachable from `N`.
+        4. Moreover, `'ne'` has no outcoming edges.
+    4. `L` is a partial `labeling function L`:
+    5. `E → {T, F}` that assigns labels to edges in agreement with the flow of control in `P`. <br><br>
+    - **Let us establish a convention:** we do not differentiate between statements of a program `P` and `nodes` of its `CFG`, since the `CFG` represents the program `P` (there is one-to-one correspondence).
+        - If not stated otherwise, we assume that programs use only **if-then-else** constructs, no `switch` or alike. As a result, every node from a `CFG` has the output degree at most two.
 
-    n1, n2, n3, . . . , nk
+<br>
+<br>
 
-where n1 = ns, nk = ne and for all i, 1 ≤i < k, (ni, ni+1) ∈ E. If a run corresponds to some real execution of a program, we say that it is a feasible run, otherwise it is an unfeasible run. As can be seen
+2.  **Definition**: Let (N, E, ns, ne, l) be a CFG of a program P. A run of the program P is a sequence of nodes from the CFG
 
-Some versions of control flow graphs do not include unconditional jump statements (goto, break, continue) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG.
+        n1, n2, n3, . . . , nk
+
+    where `n1 = ns`, `nk = ne` and `for all i, 1 ≤i < k, (ni, ni+1) ∈ E`. If a run corresponds to some real execution of a program, we say that it is a **feasible** run, otherwise it is an **unfeasible** run.
+
+    Some versions of control flow graphs do not include unconditional jump statements (`goto, break, continue`) as a node, but rather represent such statements as an edge. We include all statements of a program P as nodes to get bijective mapping between P and nodes of its CFG.
 
 Every switch statement can be transformed into a sequence of if-then-else statements
 
 ![program and its cfg](extras/imgs/cfg_example.png)
 
-    a program and its cfg
+    a program and its control flow graph
 
 ### We can divide program slicing into two categories:
 
@@ -128,53 +146,28 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
 -   Slicing with pointers and Unstructured control flow: now we can slice programs with pointers and interprocedural control flow.
 
-# **FRAMA-C**
+# **PROGRAMMING TOOLS**
 
-## What is it?
+## **FRAMA-C Platform**
 
-Frama-C is an open-source extensible and collaborative platform dedicated to source-code analysis of C software. The Frama-C analyzers assist you in various source-code-related activities, from the navigation through unfamiliar projects up to the certification of critical software.
-
-## What it can do?
-
-The collaborative approach of Frama-C allows analyzers to build upon the results already computed by other analyzers in the framework. Thanks to this approach, Frama-C can provide a number of sophisticated tools such as a concurrency safety analysis (Mthread), an enforcer of secure information flow (SecureFlow), or a set of tools for various test coverage criteria (LTest), among many others.
-
-## Frama-C Plugins
-
-Here are some of the most important plugins:
-
--   ## Value
-
-    The Value plugin performs abstract interpretation on C programs to infer information about the possible values of variables and expressions. It can detect potential runtime errors such as null pointer dereferences, buffer overflows, and integer overflows. The plugin can also provide information on variable initialization, pointer aliasing, and interprocedural analysis. It is a powerful tool for both bug-finding and program optimization.
-
--   ## WP
-
-    The WP (Weakest Precondition) plugin is a deductive verification tool that uses mathematical logic to prove the correctness of programs. It can prove properties such as functional correctness, safety properties, and temporal properties. The plugin requires the programmer to provide annotations in the form of preconditions and postconditions, and it uses these annotations to generate proof obligations. The plugin can also generate counterexamples to aid in debugging. It is a powerful tool for ensuring the correctness of critical software.
-
--   ## EVA
-
-    The EVA (Evaluation of C Expressions with Value Analysis) plugin evaluates complex C expressions at compile-time using abstract interpretation. It can provide precise information on the possible values of expressions, making it useful for program optimization and bug-finding. The plugin can also detect potential runtime errors such as null pointer dereferences and division by zero. It is a lightweight and efficient tool for analyzing C code.
-
--   ## Jessie
-
-    The Jessie plugin is a deductive verification tool that uses the Jessie intermediate language to prove the correctness of programs. It requires the programmer to provide annotations in the form of preconditions and postconditions, and it generates proof obligations from these annotations. The plugin supports a variety of programming constructs, including pointers, arrays, and recursion. It is a powerful tool for ensuring the correctness of critical software.
-
--   ## RTE
-
-    The RTE plugin verifies the correctness of programs that use the RTE (Runtime Environment) library of Frama-C. It checks if the library functions are used correctly and if the program meets all runtime restrictions of the library. The plugin is capable of finding errors such as invalid pointers and array bounds violations. Additionally, it verifies if the library functions are called with the correct arguments and if the program does not try to access uninitialized variables. The plugin is useful for ensuring the correctness of programs that use the RTE library in critical environments.
-
--   ## Frama-Clang
-
-    The Frama-Clang plugin is a front-end for Frama-C that allows it to handle C++ code. It uses the Clang compiler to parse the code and generate an AST (Abstract Syntax Tree), which is then passed to Frama-C for analysis. The plugin supports a variety of C++ language features, including templates and namespaces. It is a useful tool for analyzing C++ code using the Frama-C framework.
-
--   ## PathCrawler
-    The PathCrawler plugin is a symbolic execution engine for C programs. It explores all possible paths through the program and checks for potential runtime errors such as null pointer dereferences and buffer overflows. The plugin can also generate test cases that exercise different program paths, making it useful for automated testing. It is a powerful tool for analyzing complex C programs.
+## [Click here to see the documentation](./extras/frama-c/FramacTool.md)
 
 ---
 
-## New versions! [CLICK ME](./extras/NewVersions.md) (pt-br)
+---
 
-## Tutorial for frama-c installation: [CLICK ME!](./extras/TutorialFramaC.md)
+---
 
-## Example of use(interactive mode): [CLICK ME!](./extras/exampleOfInteractivemode.md)
+## **PAGAI tool:**
 
-## Example of use and documentation of slicing tools(command line tool): [CLICK ME!](./extras/exampleOfCLIMode.md)
+[Click here to see the documentation](./extras/pagai/PagaiTool.md)
+
+---
+
+---
+
+---
+
+## **ESBMC Tool**
+
+[Click here to see the documentation](./extras/esbmc/esbmcTool.md)
