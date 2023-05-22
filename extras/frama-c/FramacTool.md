@@ -41,10 +41,18 @@ Here are some of the most important plugins:
 
 ---
 
-## New versions! [CLICK ME](./extras/frama-c/NewVersions.md) (pt-br)
+## New versions! [CLICK ME](./NewVersions.md)
 
-## Tutorial for frama-c installation: [CLICK ME!](./extras/frama-c/TutorialFramaC.md)
+## Tutorial for frama-c installation: [CLICK ME!](./TutorialFramaC.md)
 
-## Example of use(interactive mode): [CLICK ME!](./extras/frama-c/exampleOfInteractivemode.md)
+## Example of use(interactive mode): [CLICK ME!](./exampleOfInteractivemode.md)
 
-## Example of use and documentation of slicing tool(command line tool): [CLICK ME!](./extras/frama-c/exampleOfCLIMode.md)
+## Example of use and documentation of slicing tool(command line tool): [CLICK ME!](./exampleOfCLIMode.md)
+
+---
+
+---
+
+---
+
+## to go back to the previous page: [Click me!](../../README.md)

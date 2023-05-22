@@ -13,5 +13,7 @@
 -   In version 26, improvements were made to assertion analysis, type analysis, and support for assertion analysis in multi-threaded programs.
 
 ---
+---
+---
 
-## to go back to the previous page: [Click me!](../README.md)
+## to go back to the previous page: [Click me!](./FramacTool.md)

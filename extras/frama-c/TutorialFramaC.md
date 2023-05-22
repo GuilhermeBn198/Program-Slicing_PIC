@@ -96,5 +96,7 @@ When the installation is complete, you can test Frama-C with the following comma
 This will launch the Frama-C graphical interface and you can start working with the tool.
 
 ---
+---
+---
 
-## to go back to the previous page: [Click me!](../README.md)
+## to go back to the previous page: [Click me!](./FramacTool.md)

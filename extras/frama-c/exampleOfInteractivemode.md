@@ -52,4 +52,10 @@
 
 -   frama-c sliced the parts of the code which doesn't relate to the 'sum' variable.
 
-## to go back to the previous page: [Click me!](../README.md)
+---
+
+---
+
+---
+
+## to go back to the previous page: [Click me!](./FramacTool.md)

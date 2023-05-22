@@ -319,7 +319,10 @@ Which means that command needs to be wrote in **order left to right**.
 -   `-ocode <file name>` redirects all output code of the current project to the designated file.
 
 ---
-
+---
+---
 ## Complex frama-c tests : [Click me!](./ComplexFramaCTests.md)
 
-## to go back to the previous page: [Click me!](../README.md)
+
+---
+## to go back to the previous page: [Click me!](./FramacTool.md)
