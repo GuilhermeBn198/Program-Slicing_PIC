@@ -6,10 +6,10 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 **All the data collected here is available in more details** in the Master Thesis of Marek Chalupa [Click here to see it!](./materials/thesis_PIBIC.pdf), the user-manual from Frama-c platform [Frama-c general User Manual(EN)!](./materials/frama-c-user-manual.pdf) and [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf). you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html).
 
-
 ---
 
 ## **TO DO:**
+
 ### 27/03~10/04:
 
 -   [x] Install Frama-C
@@ -30,23 +30,25 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 -   [x] (EXTRA!) add pt-br support to the repository.
 
 ### 03/05~10/05
-- [ ] complete the documentation for -slice-assert, -slice-pragma
-  - [x] (EXTRA!) enhance the documentation for definitions of slices 
-- [ ] study more about **-slice-assert**, **-slice-pragma**, -slice-return, -slice-calls
-- [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
-  - [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
-    - [ ] 1/5
-    - [ ] 2/5
-    - [ ] 3/5
-    - [ ] 4/5
-    - [ ] 5/5
-- [ ] test the output of frama-c combined with **esbmc.org** <- COMPLEX!
-  - [ ] 1/5
-  - [ ] 2/5
-  - [ ] 3/5
-  - [ ] 4/5
-  - [ ] 5/5
 
+-   [x] complete the documentation for -slice-assert, -slice-pragma
+    -   [x] (EXTRA!) enhance the documentation for definitions of slices
+-   [ ] study more about **-slice-assert**, **-slice-pragma**, **-slice-return**, **-slice-calls**
+    -   [x] 1/2
+    -   [ ] 2/2
+-   [ ] 1 example with various criterions focusing in a **assert(0)** <- this is expected to be an error
+-   [ ] study this thing -> https://pagai.gricad-pages.univ-grenoble-alpes.fr/usage.html
+    -   [ ] 1/5
+    -   [ ] 2/5
+    -   [ ] 3/5
+    -   [ ] 4/5
+    -   [ ] 5/5
+-   [ ] test the output of frama-c combined with **esbmc.org** <- COMPLEX!
+    -   [ ] 1/5
+    -   [ ] 2/5
+    -   [ ] 3/5
+    -   [ ] 4/5
+    -   [ ] 5/5
 
 # **Program Slicing**
 
@@ -55,40 +57,45 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 It's a term used in several techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria.
 
 ## **Some definitions:**
+
 ## What is a slice?
-- **Definition by Weiser:**
-    
+
+-   **Definition by Weiser:**
+
     The original program and the transformed program must be identical when observed through the window defined by the slicing criterion, defined by a program point and a list of variables. This means that the sequence of values observed for these variables at this point must be the same. In addition, the transformed program must be obtained by suppressing some instructions from the original program.
 
-    This definition was later challenged on the grounds that it is not sufficient to convey the intuitive understanding that we have of slicing. 
-    
+    This definition was later challenged on the grounds that it is not sufficient to convey the intuitive understanding that we have of slicing.
+
     example:
-    |    P    |          P1        |          P2        |
+    | P | P1 | P2 |
     |:-------:|:------------------:|:------------------:|
-    | a = 1   |                    |      a = 1         |
-    | b = 3   |                    |      b = 3         |
-    | c = a*b |                    |                    |
-    | a = 2   |      a = 2         |                    |
-    | b = 2   |      b = 2         |                    |
-    | d = a+b |      d = a+b       |      d = a+b       |
+    | a = 1 | | a = 1 |
+    | b = 3 | | b = 3 |
+    | c = a\*b | | |
+    | a = 2 | a = 2 | |
+    | b = 2 | b = 2 | |
+    | d = a+b | d = a+b | d = a+b |
 
     P1 is probably what we expect from the slicing of P if we are interested in the variable d after the last instruction, but P2 is also correct from Weiser's point of view. Which is ambiguous. It seems unlikely to construct an algorithm that builds P2, but we can still see that the definition is insufficient to fully specify what the result of a slicing should be.
-    
+
     the formalization of the definition is:
-    
+
     ![formalization](extras/imgs/formalization_of_slice.png)
-    
+
     Even though this definition has the same drawbacks as the original one, it allows for correctness proofs of its algorithms relative to this formalization.
 
 ## Dependency Graphs
- - PDG (Program Dependence Graph). Such a graph is used to represent the various dependencies between the instructions in a program. They exploit it to calculate a non-executable slicing that only concerns instructions that influence the value of variables, but this representation will also be used to calculate an executable slicing.  
-  
+
+-   PDG (Program Dependence Graph). Such a graph is used to represent the various dependencies between the instructions in a program. They exploit it to calculate a non-executable slicing that only concerns instructions that influence the value of variables, but this representation will also be used to calculate an executable slicing.
+
     ```
     A slice of a program with respect to program point p and variable x consists of a set of statements of the program that might affect the value of x at p.
     ```
- - However, she specifies that x must be defined or used in p. Indeed, when the graph is constructed, the slicing reduces to an accessibility problem to a node, where a node represents a program point and contains only the relationships concerning the variables that appear there. This limitation can be overcome by maintaining a correspondence between the data at a program point and the nodes of the graph.
+
+-   However, she specifies that x must be defined or used in p. Indeed, when the graph is constructed, the slicing reduces to an accessibility problem to a node, where a node represents a program point and contains only the relationships concerning the variables that appear there. This limitation can be overcome by maintaining a correspondence between the data at a program point and the nodes of the graph.
 
 ## Control Flow Graph(CFG)
+
 -   Definition 1. A control flow graph (CFG) of a program P is a quintuple(N, E, 'ns', 'ne', l) where (N, E) is a finite directed graph, N is a set of nodes and E ⊆ N × N is a set of edges. Each statement of P is represented by a node in the CFG and edges between nodes represent the flow of control in P: there is an edge between nodes n1 and n2 if n2 can be executed immediately after n1. There are distinguished entry and exit nodes in N, 'ns' and 'ne', such that every node n ∈ N is reachable from 'ns', and 'ne' is reachable from n. Moreover, 'ne' has no outcoming edges. l is a partial labeling function l : E → {T, F} that assigns labels to edges in agreement with the flow of control in P. Let us establish a convention: we do not differentiate between statements of a program P and nodes of its CFG, since the CFG represents the program P (there is one-to-one correspondence). If not stated otherwise, we assume that programs use only if-then-else constructs, no switch or alike. As a result, every node from a CFG has the output degree at most two.
     <br>
     <br>
@@ -110,7 +117,6 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
 1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
 2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
-
 
 ### There are 3 different aproaches we can do to slice a program:
 

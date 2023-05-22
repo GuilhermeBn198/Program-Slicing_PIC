@@ -5,10 +5,9 @@ int main() {
   double b = 4;
   double c = 123;
 
-  //@ assert(b >= 0);
-
   double d = a / b;
   c = a;
+  //@ assert(c >= 0);
 
   return 0;
 }
