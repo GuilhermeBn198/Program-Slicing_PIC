@@ -57,15 +57,15 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
     -   [ ] Create documentation for esbmc
     -   [ ] Create documentation for pagai
 
-# **PROGRAM SLICING**
+## **PROGRAM SLICING**
 
-## What is it?
+### **What is it?**
 
 It's a term used in several techniques to decompose a program based on data-flow information. It extracts statements of a program that are relevant to the program’s behavior with respect to certain criteria.
 
-## **Some definitions:**
+### **Some definitions:**
 
-## What is a slice?
+### **What is a slice?**
 
 -   **Definition by Weiser:**
 
@@ -91,7 +91,7 @@ It's a term used in several techniques to decompose a program based on data-flow
 
     Even though this definition has the same drawbacks as the original one, it allows for correctness proofs of its algorithms relative to this formalization.
 
-## Dependency Graphs
+### **Dependency Graphs**
 
 -   PDG (Program Dependence Graph). Such a graph is used to represent the various dependencies between the instructions in a program. They exploit it to calculate a non-executable slicing that only concerns instructions that influence the value of variables, but this representation will also be used to calculate an executable slicing.
 
@@ -101,7 +101,7 @@ It's a term used in several techniques to decompose a program based on data-flow
 
 -   However, she specifies that x must be defined or used in p. Indeed, when the graph is constructed, the slicing reduces to an accessibility problem to a node, where a node represents a program point and contains only the relationships concerning the variables that appear there. This limitation can be overcome by maintaining a correspondence between the data at a program point and the nodes of the graph.
 
-## Control Flow Graph(CFG)
+### **Control Flow Graph(CFG)**
 
 1. **Definition**: A control flow graph (`CFG`) of a program P is a `quintuple(N, E, 'ns', 'ne', L)`:
     1. where `(N, E)` is a finite directed graph;
@@ -133,12 +133,12 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
     a program and its control flow graph
 
-### We can divide program slicing into two categories:
+#### **We can divide program slicing into two categories:**
 
 1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
 2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
 
-### There are 3 different aproaches we can do to slice a program:
+#### **There are 3 different aproaches we can do to slice a program:**
 
 -   Data-Flow Aproach: Here we use the original Weiser algorithm to slice a program that does not contain pointers, which compute backward static slices. Where it goes backwards from the points of interest and static because the slice is created independently of a particular run of a program – it preserves a program’s behavior(with respect to a given criterion) on any path that the program can take.
 
@@ -146,11 +146,13 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
 -   Slicing with pointers and Unstructured control flow: now we can slice programs with pointers and interprocedural control flow.
 
-# **PROGRAMMING TOOLS**
+---
 
-## **FRAMA-C Platform**
+## **PROGRAMMING TOOLS**
 
-## [Click here to see the documentation](./extras/frama-c/FramacTool.md)
+### **FRAMA-C Platform**
+
+#### [Click here to see the documentation](./extras/frama-c/FramacTool.md)
 
 ---
 
@@ -158,16 +160,16 @@ Every switch statement can be transformed into a sequence of if-then-else statem
 
 ---
 
-## **PAGAI tool:**
+### **PAGAI tool:**
 
-[Click here to see the documentation](./extras/pagai/PagaiTool.md)
-
----
+#### [Click here to see the documentation](./extras/pagai/PagaiTool.md)
 
 ---
 
 ---
 
-## **ESBMC Tool**
+---
 
-[Click here to see the documentation](./extras/esbmc/esbmcTool.md)
+### **ESBMC Tool**
+
+#### [Click here to see the documentation](./extras/esbmc/esbmcTool.md)

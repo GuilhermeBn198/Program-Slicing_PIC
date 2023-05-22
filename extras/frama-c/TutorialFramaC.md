@@ -16,32 +16,32 @@
 
 ### 2. Run the following command to update the package list:
 
-```
-	sudo apt-get update
+```bash
+sudo apt-get update
 ```
 
 ### 3. Then, run the following command to install the required dependencies:
 
-```
-	sudo apt-get install -y m4 ocaml opam zlib1g-dev libsqlite3-dev libgmp-dev libgtk2.0-dev
+```bash
+sudo apt-get install -y m4 ocaml opam zlib1g-dev libsqlite3-dev libgmp-dev libgtk2.0-dev
 ```
 
 ### 4. Next, run the following commands to install the latest version of Frama-C:
 
-```
-	opam init --disable-sandboxing
-	opam switch create 4.12.0
-	eval $(opam env)
-	opam update
-	opam install frama-c
+```bash
+opam init --disable-sandboxing
+opam switch create 4.12.0
+eval $(opam env)
+opam update
+opam install frama-c
 ```
 
-These commands initialize the OPAM package manager, configure a specific version of OCaml (4.12.0), update OPAM, and install Frama-C. <br><br>
+- These commands initialize the OPAM package manager, configure a specific version of OCaml (4.12.0), update OPAM, and install Frama-C. <br><br>
 
 ### 5. When the installation is complete, you can test Frama-C with the following command:
 
 ```bash
-	frama-c-gui
+frama-c-gui
 ```
 
 ### This will launch the Frama-C graphical interface, where you can start working with the tool.
@@ -55,45 +55,45 @@ These commands initialize the OPAM package manager, configure a specific version
 -   Open a terminal on your macOS system and run the following command to install the Homebrew package manager:
 
 ```bash
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### 2. Install Required Dependencies
 
-Run the following command to install the required dependencies:
+- Run the following command to install the required dependencies:
 
 ```bash
-	brew install opam ocaml-findlib gtk+ gtk-mac-integration sqlite3 gmp
+brew install opam ocaml-findlib gtk+ gtk-mac-integration sqlite3 gmp
 ```
 
 ### 3. Configure OPAM
 
-Run the following commands to configure OPAM:
+- Run the following commands to configure OPAM:
 
 ```bash
-	opam init --disable-sandboxing
-	opam switch create 4.12.0
-	eval $(opam env)
-	opam update
+opam init --disable-sandboxing
+opam switch create 4.12.0
+eval $(opam env)
+opam update
 ```
 
 ### 4. Install Frama-C
 
-Run the following command to install Frama-C:
+- Run the following command to install Frama-C:
 
 ```bash
-	opam install frama-c
+opam install frama-c
 ```
 
 ### 5. Test Frama-C
 
-When the installation is complete, you can test Frama-C with the following command:
+- When the installation is complete, you can test Frama-C with the following command:
 
 ```bash
-	frama-c-gui
+frama-c-gui
 ```
 
-This will launch the Frama-C graphical interface and you can start working with the tool.
+- This will launch the Frama-C graphical interface and you can start working with the tool.
 
 ---
 ---
