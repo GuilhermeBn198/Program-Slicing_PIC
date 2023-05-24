@@ -7,7 +7,7 @@
     -   here you can see that your code is displayed at the right corner of the screen, which cannot be modified, whenever the code changes you need to reach the marked in green option in the top corner of the screen and select it again.
     -   the panel below the code show you the messages of the analysis and other properties of the archive.
 
--   here is a example of my code which was improved by the analysis of the tool, I discovered that the variables of my code were reaching overflow. I solved the problem typing them to unsigned long long. [you can see it here](../../tests/simple_tests/test1.c)
+-   here is a example of my code which was improved by the analysis of the tool, I discovered that the variables of my code were reaching overflow. I solved the problem typing them to unsigned long long. [you can see it here](../../tests/simple_tests/slice-calls/test1.c)
 
     ```c
     void readln(char *str) {

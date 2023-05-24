@@ -56,17 +56,17 @@
     int mult(int x, int y) { return (x * y); }
 
     int main() {
-    int a = 0;
-    int b = 1;
-    int c = 2;
+        int a = 0;
+        int b = 1;
+        int c = 2;
 
-    printf("x: %d\n", a);
-    printf("y: %d\n", b);
-    printf("z: %d\n", c);
-    sum(a, b);
-    printf(mult(a,b));
-    printf(sum(b, c));
-    return 0;
+        printf("x: %d\n", a);
+        printf("y: %d\n", b);
+        printf("z: %d\n", c);
+        sum(a, b);
+        printf(mult(a,b));
+        printf(sum(b, c));
+        return 0;
     }
     ```
 
@@ -127,15 +127,13 @@
     -   The resulting slice would include only the statements that affect the values of x and y, which in this case are the assignments `x = foo(a)` and `y = bar(b)`.
 
         ```c
-        int foo_slice_1(int x)
-        {
+        int foo_slice_1(int x){
             int **retres;
             **retres = x + 1;
             return \_\_retres;
         }
 
-        void main(void)
-        {
+        void main(void){
             int a = 10;
             int c = foo_slice_1(a);
             return;
@@ -151,60 +149,26 @@
 -   The `-slice-pragma` option in Frama-C is used to slice the code with respect to user-defined slicing pragmas. Pragmas are preprocessor directives that provide additional information to the compiler and can be used to customize the behavior of the slicing process.
 
 -   you can use slicing pragmas to specify the parts of the code that you want to preserve in the sliced program. To do this, you can add `//@ slice pragma` annotations in your source code. The syntax for adding a slicing pragma is:
-    ```
-    //@ slice pragma "name";
-    ```
+
+        /*@ slice pragma ctrl; */
+
     -   there are 3 types of slicing pragmas that can be used to specify the parts of the code that you want to preserve in the sliced program:
+
         -   `/*@ slice pragma ctrl; */`: This pragma preserves the reachability of the control-flow point where it is placed. It ensures that the control flow of the sliced program will reach this point, just like in the original program. In other words, this line is often used in loops and conditionals which maintain the code in the control flow. See the example below:
-        -   [code](../../tests/simple_tests/test7.c)  
-            In this code we can see that the `/_@ slice pragma ctrl; _/` is being used inside the for loop to main it in the output of the framac, see the expected output below:
-        -   ![code](../../materials/imgs/pragma-ctrl.png)
-            -   we can use this multiple times to make explicit control flow of different definitions of the code, in other words, necessary code for the execution of the program.
+
+            -   [code](../../tests/simple_tests/slice-pragma/test7.c)
+
+                In this code we can see that the `/*@ slice pragma ctrl; */` is being used inside the for loop to main it in the output of the framac, see the expected output below:
+
+                ![code](../../materials/imgs/pragma-ctrl.png)
+
+            -   **we can use this multiple times** to make explicit control flow of different definitions of the code, in other words, necessary code for the execution of the program.
+
         -   `/*@ slice pragma expr e; */`: This pragma preserves the value of the ACSL expression `e`(this e can be changed for anything) at the control-flow point where it is placed. It ensures that the value of the expression `e` will be the same in both the original and the sliced programs.
+
+            -   Which this means is that the expression given in the pragma will be maintained in the new code, like here i
+
         -   `/*@ slice pragma stmt; */`: This pragma preserves the effects of the statement immediately following the pragma. It ensures that the statement will be included in the sliced program, and its effects will be the same as in the original program.
--   Here, "name" is the user-defined name for the slicing pragma. For example, consider the following code:
-
-    ```c
-    #include <stdio.h>
-
-    int main() {
-        int a = 10;
-        int b = 20;
-
-        //@ slicing_pragma "keep_addition";
-        int c = a + b;
-
-        int d = a * b;
-
-        printf("Sum: %d\n", c);
-        printf("Product: %d\n", d);
-
-        return 0;
-    }
-    ```
-
--   In this code, we have added a slicing pragma "keep_addition" before the addition operation. Now, if you want to slice the code while preserving the addition operation, you can use the -slice-pragma option with Frama-C:
-
-    ```bash
-    frama-c -slice-pragma keep_addition .c -then-on 'Slicing export' -print
-    ```
-
--   The resulting sliced code will preserve the addition operation and remove the multiplication operation:
-
-    ```c
-    void main(void)
-    {
-    int a;
-    int b;
-    int c;
-    a = 10;
-    b = 20;
-    /*@ slicing_pragma "keep_addition"; */
-    c = a + b;
-    printf("Sum: %d\n", c);
-    return;
-    }
-    ```
 
 Using slicing pragmas and the -slice-pragma option, you can have more control over which parts of the code you want to keep or remove during the slicing process
 
@@ -225,9 +189,9 @@ Using slicing pragmas and the -slice-pragma option, you can have more control ov
     ```c
     #include <assert.h>
     int main() {
-    double a = 3;
-    double b = 4;
-    double c = 123;
+        double a = 3;
+        double b = 4;
+        double c = 123;
 
         //@ assert(b >= 0);
 
@@ -248,11 +212,10 @@ Using slicing pragmas and the -slice-pragma option, you can have more control ov
 
     ```c
     /* Generated by Frama-C */
-    void main(void)
-    {
-    double b = (double)4;
-    /*@ assert b ≥ 0; */ ;
-    return;
+    void main(void){
+        double b = (double)4;
+        /*@ assert b ≥ 0; */ ;
+        return;
     }
     ```
 
@@ -260,13 +223,12 @@ Using slicing pragmas and the -slice-pragma option, you can have more control ov
 
     ```c
     /* Generated by Frama-C */
-    void main(void)
-    {
-    double c;
-    double a = (double)3;
-    c = a;
-    /*@ assert c ≥ 0; */ ;
-    return;
+    void main(void){
+        double c;
+        double a = (double)3;
+        c = a;
+        /*@ assert c ≥ 0; */ ;
+        return;
     }
     ```
 

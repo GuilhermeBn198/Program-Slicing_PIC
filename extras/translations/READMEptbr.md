@@ -57,7 +57,7 @@ Todos os dados coletados aqui estão disponíveis em mais detalhes na Tese de Me
 
 Definição 2. Seja (N, E, ns, ne, l) um CFG de um programa P. Uma execução do programa P é uma sequência de nós do CFG onde n1 = ns, nk = ne e para todo i, 1 ≤ i < k, (ni, ni+1) ∈ E. Se uma execução corresponde a alguma execução real de um programa, dizemos que ela é uma execução viável, caso contrário, é uma execução inviável. Como pode ser observado,
 
-![program and its cfg](../imgs/cfg_example.png)
+![program and its cfg](../../materials/imgs/cfg_example.png)
 
     a program and its cfg
 

@@ -3,10 +3,9 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-void readln_slice_1(char *str)
-{
+void readln_slice_1(char *str) {
   size_t tmp_0;
-  fgets(str,100,__fc_stdin);
+  // fgets(str,100,__fc_stdin);
   tmp_0 = strlen((char const *)str);
   if ((int)*(str + (tmp_0 - (size_t)1)) == '\n') {
     size_t tmp;
@@ -16,8 +15,7 @@ void readln_slice_1(char *str)
   return;
 }
 
-int main(void)
-{
+int main(void) {
   int __retres;
   char n[100];
   char m[100];
@@ -25,9 +23,7 @@ int main(void)
   readln_slice_1(m);
   int i = 1;
   int num = atoi((char const *)(n));
-  while (i <= num) i ++;
+  while (i <= num) i++;
   __retres = 0;
   return __retres;
 }
-
-

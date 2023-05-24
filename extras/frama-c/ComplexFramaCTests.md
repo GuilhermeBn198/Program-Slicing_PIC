@@ -3,7 +3,7 @@
 ## pragma-assert-return-calls testcase 1:
 
 -   [code](/tests/complex_tests/pragma_assert_return/test1.c)
--   [sliced code](/tests/sliced_tests/pragma_assert_return/test1-sliced.c)
+-   [sliced code](/tests/complex_tests/pragma_assert_return/test1-sliced.c)
 -   assumptions:
 
     -   In this example, we have added slicing pragmas "add" and "multiply" for the addition and multiplication functions, respectively. We also have an assertion y >= x in the main function.

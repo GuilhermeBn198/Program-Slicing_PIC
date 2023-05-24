@@ -1,4 +1,5 @@
 int add(x, y) {
+  /*@ slice pragma expr x; */
   x += y;
   return x;
 };
@@ -14,7 +15,6 @@ int main() {
 
   for (int i = 0; i < z; i++) {
     x++;
-    /*@ slice pragma ctrl; */
   }
 
   printf("After swap: x = %d, y = %d\n", x, y);
