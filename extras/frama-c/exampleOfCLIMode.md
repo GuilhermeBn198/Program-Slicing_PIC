@@ -152,29 +152,94 @@
 
         /*@ slice pragma ctrl; */
 
-    -   there are 3 types of slicing pragmas that can be used to specify the parts of the code that you want to preserve in the sliced program:
+    -   **there are 3 types of slicing pragmas that can be used to specify the parts of the code that you want to preserve in the sliced program:**
 
-        -   `/*@ slice pragma ctrl; */`: This pragma preserves the reachability of the control-flow point where it is placed. It ensures that the control flow of the sliced program will reach this point, just like in the original program. In other words, this line is often used in loops and conditionals which maintain the code in the control flow. See the example below:
+        -   **`/*@ slice pragma ctrl; */`**: This pragma preserves the reachability of the control-flow point where it is placed. It ensures that the control flow of the sliced program will reach this point, just like in the original program. In other words, this line is often used in loops and conditionals which maintain the code in the control flow. See the example below:
 
             -   [code](../../tests/simple_tests/slice-pragma/test7.c)
 
-                In this code we can see that the `/*@ slice pragma ctrl; */` is being used inside the for loop to main it in the output of the framac, see the expected output below:
+                In this code we can see that the **`/*@ slice pragma ctrl; */`** is being used inside the for loop to main it in the output of the framac, see the expected output below:
 
-                ![code](../../materials/imgs/pragma-ctrl.png)
+                ![pragma-ctrl](../../materials/imgs/pragma-ctrl.png)
 
             -   **we can use this multiple times** to make explicit control flow of different definitions of the code, in other words, necessary code for the execution of the program.
 
-        -   `/*@ slice pragma expr e; */`: This pragma preserves the value of the ACSL expression `e`(this e can be changed for anything) at the control-flow point where it is placed. It ensures that the value of the expression `e` will be the same in both the original and the sliced programs.
+        -   **`/*@ slice pragma expr e; */`**: This pragma preserves the value of the ACSL expression `e`(this e can be changed for anything) at the control-flow point where it is placed. It ensures that the value of the expression `e` will be the same in both the original and the sliced programs.
 
-            -   Which this means is that the expression given in the pragma will be maintained in the new code, like here i
+            -   Which means that the expression given in the pragma will be maintained in the new code, like in the example:
 
-        -   `/*@ slice pragma stmt; */`: This pragma preserves the effects of the statement immediately following the pragma. It ensures that the statement will be included in the sliced program, and its effects will be the same as in the original program.
+                ```c
+                int add(x, y) {
+                /*@ slice pragma stmt; */
+                    { x += y; }
+                    return x;
+                };
+
+                int main() {
+                    int x = 5;
+                    int y = 10;
+                    int z = 12;
+
+                    printf("Before swap: x = %d, y = %d\n", x, y);
+                    swap(&x, &y);
+                    add(x, y);
+                    /*@ slice pragma expr x; */
+
+                    for (int i = 0; i < z; i++) {
+                        x++;
+                    }
+
+                    printf("After swap: x = %d, y = %d\n", x, y);
+
+                    return 0;
+                }
+                ```
+
+            -   using the command:
+
+                ```bash
+                frama-c -slice-pragma main,add test7.c -then-last -print
+                ```
+
+            -   see that with the use of `pragma stmt` with the `expr x`, frama-c could analyze, detect and slice apart the the for loop, the z variable, and printfs.
+                ![pragma-expr e](./../../materials/imgs/pragma-expr.png)
+
+        -   **`/*@ slice pragma stmt; */`**: This pragma preserves the effects of the statement immediately following the pragma. It ensures that the statement will be included in the sliced program, and its effects will be the same as in the original program. see the example below:
+
+            ```c
+            #include <stdio.h>
+            int main() {
+                int x = 5;
+                int y = 10;
+                printf("Before swap: x = %d, y = %d\n", x, y);
+                /*@ slice pragma stmt; */
+                {
+                    int temp = x;
+                    x = y;
+                    y = temp;
+                }
+                printf("After swap: x = %d, y = %d\n", x, y);
+                return 0;
+            }
+            ```
+
+            -   use the following command to use frama-c with pragma:
+
+                ```bash
+                frama-c -slice-pragma main test8.c -then-last -print
+                ```
+
+            -   with the test command to see the behavior of frama-c, the generated output is expected to be something like this:
+
+                ![pragma-stmt](../../materials/imgs/pragma-stmt.png)
+
+                Notice the use of `pragma stmt` right before the `{}` block statement, meaning that the whole code block and its dependencies will be preserved in the control flow, like the variables `x` and `y`
 
 Using slicing pragmas and the -slice-pragma option, you can have more control over which parts of the code you want to keep or remove during the slicing process
 
 ---
 
-## In addition, slicing criteria can be relative to ACSL annotations. In this case, the Slicing plugin ensures that if a property is verified by the sliced code, this implies that the corresponding property is satisfied by the initial code.
+### In addition, slicing criteria can be relative to ACSL annotations. In this case, the Slicing plugin ensures that if a property is verified by the sliced code, this implies that the corresponding property is satisfied by the initial code.
 
 ## **-slice-assert f1,...,fn: Selects the assertions of functions f1,…,fn.**
 
@@ -294,7 +359,11 @@ Which means that command needs to be wrote in **order left to right**.
 
 ---
 
-## Complex frama-c tests : [Click me!](./ComplexFramaCTests.md)
+## Tests with loops: [Click me!]()
+
+---
+
+## Complex frama-c tests: [Click me!](./ComplexFramaCTests.md)
 
 ---
 
