@@ -155,8 +155,12 @@
     //@ slice pragma "name";
     ```
     -   there are 3 types of slicing pragmas that can be used to specify the parts of the code that you want to preserve in the sliced program:
-        -   `/*@ slice pragma ctrl; */`: This pragma preserves the reachability of the control-flow point where it is placed. It ensures that the control flow of the sliced program will reach this point, just like in the original program.
-        -   `/*@ slice pragma expr e; */`: This pragma preserves the value of the ACSL expression e at the control-flow point where it is placed. It ensures that the value of the expression e will be the same in both the original and the sliced programs.
+        -   `/*@ slice pragma ctrl; */`: This pragma preserves the reachability of the control-flow point where it is placed. It ensures that the control flow of the sliced program will reach this point, just like in the original program. In other words, this line is often used in loops and conditionals which maintain the code in the control flow. See the example below:
+        -   [code](../../tests/simple_tests/test7.c)  
+            In this code we can see that the `/_@ slice pragma ctrl; _/` is being used inside the for loop to main it in the output of the framac, see the expected output below:
+        -   ![code](../../materials/imgs/pragma-ctrl.png)
+            -   we can use this multiple times to make explicit control flow of different definitions of the code, in other words, necessary code for the execution of the program.
+        -   `/*@ slice pragma expr e; */`: This pragma preserves the value of the ACSL expression `e`(this e can be changed for anything) at the control-flow point where it is placed. It ensures that the value of the expression `e` will be the same in both the original and the sliced programs.
         -   `/*@ slice pragma stmt; */`: This pragma preserves the effects of the statement immediately following the pragma. It ensures that the statement will be included in the sliced program, and its effects will be the same as in the original program.
 -   Here, "name" is the user-defined name for the slicing pragma. For example, consider the following code:
 
