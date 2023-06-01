@@ -6,13 +6,17 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 <br>
 
-**All the data collected here is available in more details** in the Master Thesis of Marek Chalupa [Click here to see it!](./materials/thesis_PIBIC.pdf), the user-manual from Frama-c platform [Frama-c general User Manual(EN)!](./materials/frama-c-user-manual.pdf) and [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf). you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html).
+**All the data collected here is available in more details in**
 
----
+-   the Master Thesis of Marek Chalupa [Click here to see it!](./materials/thesis_PIBIC.pdf).
+-   The user-manual from Frama-c platform [Frama-c general User Manual(EN)!](./materials/frama-c-user-manual.pdf)
+-   [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf)
+-   you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html).
+-   the ESBMC website is [here!](https://esbmc.org/)
 
 ## **TO DO's**
 
-[Click here to see it](./TODO.md)
+[Click here to see them](./TODO.md)
 
 ## **PROGRAM SLICING**
 

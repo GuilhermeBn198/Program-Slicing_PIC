@@ -59,31 +59,31 @@
     -   [x] 4/5
     -   [x] 5/5
 -   [ ] Testar com várias opções do FRAMA-C
-    -   [ ] 1/5
+    -   [ ] 1/5 [loop_array2-2.c](./tests/loop_tests/loop_array2-2.c)
         -   [ ] 1/5
         -   [ ] 2/5
         -   [ ] 3/5
         -   [ ] 4/5
         -   [ ] 5/5
-    -   [ ] 2/5
+    -   [ ] 2/5 [loop_functions1-1.c](./tests/loop_tests/loop_functions1-1.c)
         -   [ ] 1/5
         -   [ ] 2/5
         -   [ ] 3/5
         -   [ ] 4/5
         -   [ ] 5/5
-    -   [ ] 3/5
+    -   [ ] 3/5 [loop_multivar1-1.c](./tests/loop_tests/loop_multivar1-1.c)
         -   [ ] 1/5
         -   [ ] 2/5
         -   [ ] 3/5
         -   [ ] 4/5
         -   [ ] 5/5
-    -   [ ] 4/5
+    -   [ ] 4/5 [loop_nested1-1.c](./tests/loop_tests/loop_nested1-1.c)
         -   [ ] 1/5
         -   [ ] 2/5
         -   [ ] 3/5
         -   [ ] 4/5
         -   [ ] 5/5
-    -   [ ] 5/5
+    -   [ ] 5/5 [loop_underapprox1-2.c](./tests/loop_tests/loop_underapprox1-2.c)]
         -   [ ] 1/5
         -   [ ] 2/5
         -   [ ] 3/5
