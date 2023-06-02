@@ -40,24 +40,20 @@
     -   [ ] 3/5
     -   [ ] 4/5
     -   [ ] 5/5
--   [ ] Refactor all the repository, adding the new tools to the README
+-   [x] Refactor all the repository, adding the new tools to the README
     -   [x] Refactor documentation of frama-c
-    -   [ ] Create documentation for esbmc
+    -   [x] Create documentation for esbmc
         -   [x] 1/4 what is it?
-        -   [ ] 2/4 installation
-        -   [ ] 3/4
-        -   [ ] 4/4
+        -   [x] 2/4 installation
+        -   [x] 3/4 what it can do?
+        -   [x] 4/4 Examples of use
 
 ---
 
 ## **22/05~29/05**
 
 -   [xr] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
-    -   [x] 1/5
-    -   [x] 2/5
-    -   [x] 3/5
-    -   [x] 4/5
-    -   [x] 5/5
+
 -   [ ] Testar com várias opções do FRAMA-C
     -   [ ] 1/5 [loop_array2-2.c](./tests/loop_tests/loop_array2-2.c)
         -   [ ] 1/5
@@ -91,6 +87,12 @@
         -   [ ] 5/5
 -   [ ] Slice por localização no código
 -   [ ] Um exemplo de uso com ESBMC
+-   [x] (EXTRA!) complete the udemy course:**Functiona Verification - a holistic view**
+-   [ ] (EXTRA!) complete the udemy course: **ROS for Beginners II**
+-   [ ] (EXTRA!) study all the 3 slide presentations in ESBMC documentation website:
+    -   [x] 1/3
+    -   [ ] 2/3
+    -   [ ] 3/3
 
 ---
 

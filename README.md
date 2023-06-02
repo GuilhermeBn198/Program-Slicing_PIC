@@ -12,11 +12,45 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 -   The user-manual from Frama-c platform [Frama-c general User Manual(EN)!](./materials/frama-c-user-manual.pdf)
 -   [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf)
 -   you can also check the oficial website of the platform [Here!](https://frama-c.com/index.html).
--   the ESBMC website is [here!](https://esbmc.org/)
+-   the ESBMC website is [here!](http://esbmc.org/)
+
+## **Objective**
+
+-   Acquire knowledge of program slicing, verification and validation of software through the various tools available in the market
+-   test the various tools available in different scenarios
+-   contribute to science with this research project
 
 ## **TO DO's**
 
 [Click here to see them](./TODO.md)
+
+---
+
+## **PROGRAM VERIFICATION VS PROGRAM VALIDATION**
+
+-   verification: the software should conform to its specification
+-   validation: the software should do what the user requires
+
+    **these needs to be aplied at each stage in the software production!**
+
+    With this we can:
+
+    -   discover defect in the system
+    -   be certain if the system is usable in an operational situation
+
+### **Static verification**
+
+-   Software inspections are concerned with the analysis of the static system representation to discover problems
+-   Generally supplemented by tool-based documents and code analysis
+-   Code analysis can prove the **absence of erros** but might present incorrect results
+
+### **Dynamic verification**
+
+-   Software testing is concerned with exercising and observing its behaviors
+-   generally executed with test data
+-   Can reveal the **PRESENCE OF ERRORS** no their absence
+
+---
 
 ## **PROGRAM SLICING**
 
@@ -48,7 +82,7 @@ It's a term used in several techniques to decompose a program based on data-flow
 
     the formalization of the definition is:
 
-    ![formalization](extras/imgs/formalization_of_slice.png)
+    ![formalization](materials/imgs/formalization_of_slice.png)
 
     Even though this definition has the same drawbacks as the original one, it allows for correctness proofs of its algorithms relative to this formalization.
 
@@ -90,14 +124,9 @@ It's a term used in several techniques to decompose a program based on data-flow
 
 Every switch statement can be transformed into a sequence of if-then-else statements
 
-![program and its cfg](extras/imgs/cfg_example.png)
+![program and its cfg](materials/imgs/cfg_example.png)
 
     a program and its control flow graph
-
-#### **We can divide program slicing into two categories:**
-
-1.  Dynamic analysis, which executes a program and look for erroneous behaviour during the execution of a program.
-2.  Static analysis, which does not execute the program at all and tries to draw conclusions about a program only from the source code or some other program representation.
 
 #### **There are 3 different aproaches we can do to slice a program:**
 

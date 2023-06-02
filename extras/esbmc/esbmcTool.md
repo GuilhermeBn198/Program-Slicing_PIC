@@ -39,6 +39,14 @@ It can also verify multiple-threaded programs with different conditions:
     -   ```bash
         $ ./ESBMC-Linux.sh
         ```
+    -   the script will create the directory of the ESBMC with all its files, go to the bin file and execute the command to see if its working, it should display its options:
+    -   ```bash
+        ./esbmc --help
+        ```
+
+## initial tests
+
+-
 
 ---
 
