@@ -52,15 +52,15 @@
 
 ## **22/05~29/05**
 
--   [xr] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
+-   [x] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
 
 -   [ ] Testar com várias opções do FRAMA-C
-    -   [ ] 1/5 [loop_array2-2.c](./tests/loop_tests/loop_array2-2.c)
-        -   [ ] 1/5
-        -   [ ] 2/5
-        -   [ ] 3/5
-        -   [ ] 4/5
-        -   [ ] 5/5
+    -   [x] 1/5 [loop_array2-2.c](./tests/loop_tests/loop_array2-2.c)
+        -   [x] 1/5
+        -   [x] 2/5
+        -   [x] 3/5
+        -   [x] 4/5
+        -   [x] 5/5
     -   [ ] 2/5 [loop_functions1-1.c](./tests/loop_tests/loop_functions1-1.c)
         -   [ ] 1/5
         -   [ ] 2/5
