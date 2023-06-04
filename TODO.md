@@ -86,7 +86,7 @@
         -   [ ] 4/5
         -   [ ] 5/5
 -   [ ] Slice por localização no código
--   [ ] Um exemplo de uso com ESBMC
+-   [x] Um exemplo de uso com ESBMC
 -   [x] (EXTRA!) complete the udemy course:**Functiona Verification - a holistic view**
 -   [ ] (EXTRA!) complete the udemy course: **ROS for Beginners II**
 -   [ ] (EXTRA!) study all the 3 slide presentations in ESBMC documentation website:
