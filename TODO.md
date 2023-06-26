@@ -100,6 +100,7 @@
 - [ ] Verificar para cada programa se ele é um código funcional, i.e., aceito pelo ESBMC 
 - [ ] Passar cada código pelo ESBMC, e tabelar os resultados incluindo o tempo 
 - [ ] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
+- [ ] Testar a ferramenta map2check
 
 ---
 
