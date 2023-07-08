@@ -18,6 +18,7 @@ Oriented by Professor [Herbert Rocha](https://github.com/hbgit)
 
 -   Acquire knowledge of program slicing, verification and validation of software through the various tools available in the market
 -   test the various tools available in different scenarios
+-   verify if Map2Check tool and others tools are capable of generating readable code results around the boundaries arrays and loop functions
 -   contribute to science with this research project
 
 ## **TO DO's**
