@@ -10,55 +10,26 @@
 
 ### Loop array 2-2
 
--   [code](/tests/loop_tests/loop_array2-2.c)
--   it was made 5 different tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
--   ```bash
-    1.    frama-c -slice-calls __VERIFIER_assert loop_array2-2.c -then-last -print
-    2.    frama-c -slice-value A,B loop_array2-2.c -then-last -print
-    3.
-    ```
-    -   **for test 1**, frama-c sliced the statements inside the `__VERIFIER_assert` and maintained the rest of the code, **_modifying the for loops to whiles_**, making the code more understandable.
-    -   **for test 2**, frama-c sliced everything but the statements about the arrays A and B, **INCLUDING** the
-    
-        -   ```bash
-			while (i < 2048) {
-			tmp = A[i];
-			B[i] = tmp;
-			i ++;
-			}
-			```
-
-		which is a simplified version of the declaration of SZ constant
-
-**observations:**
-
--   notice that in this case, the `-slice-return` option doesn't work because it only selects the return portion of the functions, since `main` and `__VERIFIER_assert` don't return anything.
--   there isn't a `pragma` in the code so `-slice-pragma` doesn't work too since it is used to maintain the statements subsequentially after the pragma in the code.
+[Click here to see the tests](../../tests/loop_tests/loop_array2-2/tests_looparray2-2.md)
 
 ### Loop functions 1-1
 
--   a
--   b
--   c
+[Click here to see the tests](../../tests/loop_tests/loop_functions1-1/tests_loopfunctions1-1.md)
 
 ### Loop multivar 1-1
 
--   a
--   b
--   c
+[Click here to see the tests](../../tests/loop_tests/loop_multivar1-1/tests_loopmultivar1-1.md)
+
 
 ### Loop nested 1-1
 
--   a
--   b
--   c
+[Click here to see the tests](../../tests/loop_tests/loop_nested1-1/tests_loopnested1-1.md)
+
 
 ### Loop underapprox 1-2
 
--   a
--   b
--   c
+[Click here to see the tests](../../tests/loop_tests/loop_underapprox1-2/tests_loopunderapprox1-2.md)
+
 
 ---
 
