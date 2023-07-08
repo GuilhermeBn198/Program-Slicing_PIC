@@ -355,15 +355,14 @@ Which means that command needs to be wrote in **order left to right**.
 
 ---
 
----
-
----
 
 ## Tests with loops: [Click me!](/extras/frama-c/LoopFramaCTests.md)
 
+## Complex frama-c tests: [Click me!](./ComplexFramaCTests.md)
+
 ---
 
-## Complex frama-c tests: [Click me!](./ComplexFramaCTests.md)
+---
 
 ---
 

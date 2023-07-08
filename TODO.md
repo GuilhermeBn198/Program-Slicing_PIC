@@ -109,6 +109,7 @@
   - [ ] Passar cada código pelo ESBMC, e tabelar os resultados incluindo o tempo
   - [ ] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
 - [ ] Testar a ferramenta map2check
+- [ ] (EXTRA!) Realizar testes no cruise_control
 
 ---
 

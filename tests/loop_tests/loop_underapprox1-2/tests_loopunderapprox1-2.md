@@ -1,4 +1,4 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_underapprox1-2.c**
 
 ## **Frama-c**
 
