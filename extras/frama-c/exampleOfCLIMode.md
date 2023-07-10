@@ -319,9 +319,7 @@ Using slicing pragmas and the -slice-pragma option, you can have more control ov
 
 ---
 
-## Now, for some examples we'll take the code: [click here to see it](../tests/)
-
-### testing commands:
+### testing commands examples:
 
 ```bash
 frama-c loop_simple.i -deps -slice-return main -then-on 'Slicing export' -set-project-as-default -print  -then -print -ocode ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c -then ./ocode_@PTEST_NUMBER@_@PTEST_NAME@.c  -no-deps
@@ -353,12 +351,7 @@ Which means that command needs to be wrote in **order left to right**.
 
 -   `-ocode <file name>` redirects all output code of the current project to the designated file.
 
----
-
-
-## Tests with loops: [Click me!](/extras/frama-c/LoopFramaCTests.md)
-
-## Complex frama-c tests: [Click me!](./ComplexFramaCTests.md)
+...
 
 ---
 
