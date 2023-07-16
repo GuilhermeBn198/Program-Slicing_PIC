@@ -36,6 +36,8 @@ Oriented by Professor Dr. [Herbert Rocha](https://github.com/hbgit)
 -   **ESBMC Tool**
     -   [Click here to see its documentation](./extras/esbmc/esbmcTool.md)
 
+-   **MAP2CHECK Tool**
+    -   [Click here to see its documentation](./extras/map2check/map2checkTool.md)
 ---
 
 ## **TESTS**
