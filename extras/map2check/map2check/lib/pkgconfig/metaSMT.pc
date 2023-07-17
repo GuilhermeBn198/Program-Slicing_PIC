@@ -1,0 +1,5 @@
+Name: metaSMT
+Description: SMT Solver library
+Cflags: -I/deps/install/metasmt/include;/deps/src/metaSMT/deps/boost-1_55_0-fs/include;/deps/src/metaSMT/deps/boolector-2.2.0/share/Boolector/../../include;/deps/src/stp/BUILD/include;/deps/src/metaSMT/deps/yices-2.5.1/include;/deps/src/metaSMT/deps/lingeling-ayv-86bf266-140429/share/Lingeling/../../include
+Libs: /deps/install/metasmt/lib/libmetaSMT.a  /deps/src/metaSMT/deps/boolector-2.2.0/lib/libboolector.so /deps/src/metaSMT/deps/yices-2.5.1/lib/libyices.so /deps/src/metaSMT/deps/lingeling-ayv-86bf266-140429/lib/liblingeling.so 
+

@@ -61,7 +61,7 @@ Interesting discoveries were made, such as, with the sliced code in a way the ES
      ![terminal output](../../../materials/imgs/loop-array2-2-sliced2-floatbv.png)
   - k-induction alone
    
-     ![terminal output](../../../materials/imgs/loop-array2-2-2-sliced2-kinduction.png) 
+     ![terminal output](../../../materials/imgs/loop-array2-2-sliced2-kinduction.png) 
 
 
 ---

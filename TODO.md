@@ -94,15 +94,17 @@
   - [ ] 2/3
   - [ ] 3/3
 
-## 31/05/23 ~ 11/07/23
+## 31/05/23 ~ 31/07/23
 
-- [ ] Definir as opções do FRAMA-C para efetuar o slice nos arquivos em C
+- [ ] Definir as opções do FRAMA-C para efetuar o slice nos arquivos em C focando __VERIFIER_ERROR() OU REACH_ERROR()
   - [ ] Verificar para cada programa se ele é um código funcional, i.e., aceito pelo ESBMC
   - [ ] Passar cada código pelo ESBMC, e tabelar os resultados incluindo o tempo
   - [ ] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
-- [ ] Testar a ferramenta map2check
+- [x] Testar a ferramenta map2check
 - [ ] (EXTRA!) Realizar testes no cruise_control
-
+- [ ] opção do ESBMC para usar k-induction em paralelo
+- [ ] Escrever uma página sobre o FRAMA-C
+- [ ] Escrever o relatório final, deadline 15 agosto.
 ---
 
 ---
