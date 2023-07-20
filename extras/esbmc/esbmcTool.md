@@ -57,6 +57,7 @@ It can also verify multiple-threaded programs with different conditions:
     -   ![floating point declarations](../../materials/imgs/ESBMC-initialtest-variables.png)
     -   **observe** that these functions in the code above doesn't exist in C codes, it's specifically used in the ESBMC library.
     -   `--k-induction` is a option that is selection the k-induction proof rule for the verification.
+    -   `--k-induction-parallel` is a option which uses the foundations of the k-induction proof rule but concurrently, which increases the speed that the ESBMC can execute the verification.
     -   the result should be:
     -   ```
         Checking inductive step, k = 2
@@ -137,7 +138,19 @@ It can also verify multiple-threaded programs with different conditions:
 
     -   in this case, notice that there will be multiple errors in different states in the report
 
-## These are some of the various features that are present in ESBMC
+## These are some of the various features that are present in ESBMC:
+- `--no-div-by-zero-check`: This option disables the division by zero check. It is often required by SV-COMP.
+- `--k-induction`: This option enables the k-induction algorithm for verification.
+- `--floatbv`: This option enables floating-point SMT encoding.
+- `--unlimited-k-steps`: This option removes the upper limit of iteration steps in the k-induction algorithm.
+- `--witness-output`: This option sets the path for the witness output.
+- `--force-malloc-success`: This option ensures that all dynamic allocations succeed. This is also an SV-COMP requirement.
+- `--interval-analysis`: This option enables the invariant generation.
+- `--no-pointer-check` and `--no-bounds-check`: These options are used for reachability verification.
+- `--memory-leak-check`: This option is used for memory verification.
+- `--overflow-check`: This option is used for overflow verification.
+
+It's important to note that the exact combination of options to be used depends on the specific characteristics of the program being verified and the properties to be checked.
 ---
 
 ---

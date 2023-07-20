@@ -102,7 +102,7 @@
   - [ ] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
 - [x] Testar a ferramenta map2check
 - [ ] (EXTRA!) Realizar testes no cruise_control
-- [ ] opção do ESBMC para usar k-induction em paralelo
+- [x] opção do ESBMC para usar k-induction em paralelo
 - [ ] Escrever uma página sobre o FRAMA-C
 - [ ] Escrever o relatório final, deadline 15 agosto.
 ---

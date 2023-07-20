@@ -10,7 +10,6 @@ extern int __VERIFIER_nondet_int(void);
 
 void __VERIFIER_assert_slice_1(int cond)
 {
-  /*@ slice pragma stmt; */
   if (! cond) reach_error_slice_1();
   return;
 }

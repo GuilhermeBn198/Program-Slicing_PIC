@@ -31,6 +31,19 @@
 [Click here to see the tests](../../tests/loop_tests/loop_underapprox1-2/tests_loopunderapprox1-2.md)
 
 
+## Loop Tests Data
+
+|original functions | sliced parts in Frama-c | original results in ESBMC | sliced results in ESBMC |
+|-------------------|-------------------------|----------------------------|-------------------------|
+| loop_array2-2     |#define SZ, assert(0)|                            |                         |
+| loop_functions1-1 |                         |                            |                         |
+| loop_multivar1-1  |                         |                            |                         |
+| loop_nested1-1    |                         |                            |                         |
+| loop_underapprox1-2 |                       |                            |                         |
+
+
+
+
 ---
 
 ---

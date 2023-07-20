@@ -13,6 +13,7 @@ Oriented by Professor Dr. [Herbert Rocha](https://github.com/hbgit)
 -   the slicing manual: [Frama-c SLICING Manual(FR)](./materials/frama-c-slicing-documentation-french.pdf)
 -   you can also check the oficial website of the platform: [Here!](https://frama-c.com/index.html)
 -   the ESBMC website is: [here!](http://esbmc.org/)
+-   https://link.springer.com/chapter/10.1007/978-3-030-17502-3_15
 
 ### **Objective of the project** 
 
@@ -44,6 +45,6 @@ Oriented by Professor Dr. [Herbert Rocha](https://github.com/hbgit)
 
 ### We are going to use the tests in the folder: [Tests](./tests/)
 
-Tests with loops: [Click me!](/extras/frama-c/LoopFramaCTests.md)
+## Tests with loops: [Click me!](/extras/frama-c/LoopFramaCTests.md)
 
 ## Complex frama-c tests: [Click me!](./extras/frama-c/ComplexFramaCTests.md)
