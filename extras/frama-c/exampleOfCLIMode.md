@@ -183,7 +183,7 @@
                     printf("Before swap: x = %d, y = %d\n", x, y);
                     swap(&x, &y);
                     add(x, y);
-                    /*@ slice pragma expr x; */
+                    /*@ slice pragma expr ; */
 
                     for (int i = 0; i < z; i++) {
                         x++;
