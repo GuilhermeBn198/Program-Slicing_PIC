@@ -2,6 +2,15 @@
 
 -   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
 
+
+## **What does this code do?**
+- It declares two arrays A and B of size SZ (which is defined as 2048).
+- It then fills both arrays with non-deterministic integers using the __VERIFIER_nondet_int function. This function is often used in the context of formal verification or testing to represent any possible integer.
+- After that, it copies the values from array A to array B.
+- Finally, it asserts that the value at the middle index of array A is equal to the value at the middle index of array B.
+
+The functions `abort, assert, and reach_error` are used for error handling. If the condition in __VERIFIER_assert is not met (i.e., if A[SZ / 2] is not equal to B[SZ / 2]), the program will call reach_error and abort, indicating a failure of the assertion.
+
 ## **Frama-c**
 
 -   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
@@ -19,18 +28,16 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
+- the first test was with the original file, which presented an error in verification, similar to the other codes. Look:
 - for the k-induction option 
     
     ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
 
 ## **Frama-c + ESBMC**
 these tests will follow the same models for the ones in the original file.
-```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
-```
+
 - loop_array2-2-sliced1.c
-  - k-induction-parallel 
+  - Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
 
    ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
         

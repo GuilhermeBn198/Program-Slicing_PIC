@@ -1,15 +1,25 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_array3.c**
 
--   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
+-   [code](/tests/loop_tests/loop_array3/array3.c)
+
+
+## **What does this code do?**
+
+- It declares an array A of size N (which is defined as 1024).
+- It then fills the array with non-deterministic integers using the __VERIFIER_nondet_int function. This function is often used in the context of formal verification or testing to represent any possible integer.
+- After that, it iterates over the array until it finds a zero or reaches the end of the array.
+- Finally, it asserts that the index i (the position of the first zero in the array or the size of the array if no zero is found) is less than or equal to N.
+
+The functions `abort, assert, and reach_error` are used for error handling. If the condition in __VERIFIER_assert is not met (i.e., if i is greater than N), the program will call reach_error and abort, indicating a failure of the assertion.
 
 ## **Frama-c**
 
--   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
+-   it was made one test verifying all code related to __assert_fail, with the objective to analyze the behavior of the tool in this case.
+-   the command to slice the code:
 -   ```bash
-    1.    frama-c -slice-calls reach_error ./loop_array2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./loop_array2-2-sliced1.c
+    1.   frama-c -slice-calls __VERIFIER_assert ./array3.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./array_3-sliced.c
     ```
--   this test made frama-c slice the unnecessary parts of the code, which were the definition of SZ, that could be made inside the main function, the `assert(0)` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
+-   in this case, frama-c made it different, it opted to remove the last part of the code, determining that `__VERIFIER_assert` is unnecessary to the code. 
 
 **observations:**
 
@@ -19,20 +29,19 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
-- for the k-induction option 
-    
-    ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
+- unlike the other codes analised until now, this code required much more time to finish its unwinding process, and even with more time, it reached the default upper-limit of iterations of ESBMC, which is 50. Look:
+       
+  ![terminal output](../../../materials/imgs/loop-array3-kinduction.png)
 
 ## **Frama-c + ESBMC**
 these tests will follow the same models for the ones in the original file.
-```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
-```
-- loop_array2-2-sliced1.c
+
+ESBMC couldn't verify through the induction step, even with the slice of unnecessary parts of this code. 
+
+- loop_array1-1-sliced.c
   - k-induction-parallel 
 
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
+   ![terminal output](../../../materials/imgs/loop-array3-sliced-kinduction.png) 
         
 ---
 

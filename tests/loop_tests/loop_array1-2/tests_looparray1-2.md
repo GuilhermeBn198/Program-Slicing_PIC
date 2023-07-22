@@ -1,15 +1,21 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_array1-2.c**
 
--   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
+-   [code](/tests/loop_tests/loop_array1-1/array_1-2.c)
+## **What does this code do?**
 
+- It declares an array A of size 2048.
+- It then fills the first half of the array (indices 0 to 1023) with their respective indices.
+- Finally, it asserts that the value at index 1023 of the array is indeed 1023.
+- The functions `abort, __assert_fail, and reach_error` are used for error handling. If the condition in __VERIFIER_assert is not met (i.e., if A[1023] is not equal to 1023), the program will call reach_error and abort, indicating a failure of the assertion
+- 
 ## **Frama-c**
 
--   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
+-   it was made one test verifying all code related to __assert_fail, with the objective to analyze the behavior of the tool in this case.
+-   the command to slice the code:
 -   ```bash
-    1.    frama-c -slice-calls reach_error ./loop_array2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./loop_array2-2-sliced1.c
+    1.    frama-c -slice-calls __assert_fail ./array_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./array1-1-sliced.c
     ```
--   this test made frama-c slice the unnecessary parts of the code, which were the definition of SZ, that could be made inside the main function, the `assert(0)` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
+-   this test made frama-c slice the unnecessary parts of the code, which were the `abort()` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
 
 **observations:**
 
@@ -19,20 +25,19 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
-- for the k-induction option 
-    
-    ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
+- the first test was with the original file, which presented a failure in the verification. Look:
+       
+  ![terminal output](../../../materials/imgs/loop-array1-2-kinduction.png)
 
 ## **Frama-c + ESBMC**
 these tests will follow the same models for the ones in the original file.
 ```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
+ESBMC couldn't verify through the induction step, even with the slice of unnecessary parts of this code. 
 ```
-- loop_array2-2-sliced1.c
+- loop_array1-1-sliced.c
   - k-induction-parallel 
 
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
+   ![terminal output](../../../materials/imgs/loop-array1-2-sliced-kinduction.png) 
         
 ---
 

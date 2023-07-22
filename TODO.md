@@ -65,21 +65,21 @@
 - [x] Selecionar 5 programas de https://sv-comp.sosy-lab.org/2023/benchmarks.php com LOOPs
 
 - [x] Testar com várias opções do FRAMA-C
-  - [x] 1/15 [loop_array2-2.c]
-  - [ ] 2/15 [loop_functions1-1.c]
-  - [ ] 3/15 [loop_multivar1-1.c]
-  - [ ] 4/15 [loop_nested1-1.c]
-  - [ ] 5/15 [loop_underapprox1-1.c]
-  - [ ] 6/15 [loop_underapprox1-2.c]
-  - [ ] 7/15 [loop_underapprox2-1.c]
-  - [ ] 8/15 [loop_diamond1-1.c]
-  - [ ] 9/15 [loop_array1-1.c]
-  - [ ] 10/15 [loop_array1-2.c]
-  - [ ] 11/15 [loop_array3.c]
-  - [ ] 12/15 [loop_functions1-2.c]
-  - [ ] 13/15 [loop_multivar1-2.c]
-  - [ ] 14/15 [loop_overflow1-1.c]
-  - [ ] 15/15 [loop_diamond2-2.c]
+  - [x] 1/15 [loop_array1-1.c]
+  - [x] 2/15 [loop_array1-2.c]
+  - [x] 3/15 [loop_array2-2.c]
+  - [x] 4/15 [loop_array3.c]
+  - [ ] 5/15 [loop_diamond1-1.c]
+  - [ ] 6/15 [loop_diamond2-2.c]
+  - [ ] 7/15 [loop_functions1-1.c]
+  - [ ] 8/15 [loop_functions1-2.c]
+  - [ ] 9/15 [loop_multivar1-1.c]
+  - [ ] 10/15 [loop_multivar1-2.c]
+  - [ ] 11/15 [loop_underapprox1-1.c]
+  - [ ] 12/15 [loop_underapprox1-2.c]
+  - [ ] 13/15 [loop_underapprox2-1.c]
+  - [ ] 14/15 [loop_nested1-1.c]
+  - [ ] 15/15 [loop_overflow1-1.c]
 
 - [ ] Slice por localização no código
 
