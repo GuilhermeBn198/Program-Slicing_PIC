@@ -17,12 +17,17 @@
   
 ## **Frama-c**
 
--   it was made one test verifying all code related to reach_error, with the objective to analyze the behavior of the tool in this case.
--   the command to slice the code:
+-   it was made various tests verifying all code related to reach_error, with the objective to analyze the behavior of the tool in this case.
+-   the commands to slice the code:
 -   ```bash
-    frama-c -slice-calls reach_error ./diamond_2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./diamond_2-2-sliced.c
+    frama-c -slice-calls reach_error ./loop_functions1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./functions_1-1-sliced.c
+
+    frama-c -slice-calls reach_error,__VERIFIER_assert ./loop_functions1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./functions_1-1-sliced.c
+
     ```
--   in this case, frama-c made it really similar to the original code, removing little parts of the code.
+    
+  - FRAMA-C COULDN'T SLICE THE `__VERIFIER_assert` function internal statements to reach the `reach_error` function with the -slice-calls option, and any other type of options that the researcher tried, needs further investigation!
+
 
 **observations:**
 
@@ -32,19 +37,10 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- With this case, ESBMC could verify the code with the --k-induction option. Although the inductive step crashed, the forward condition could identify that all states are reachable by 6 iterations. Look:
+- With this case, ESBMC couldn't verify the code, in all process steps it turned out to be a failure. Look:
        
-  ![terminal output](../../../materials/imgs/loop-diamond2-2-kinduction.png)
+  ![terminal output](../../../materials/imgs/loop-functions1-1-kinduction.png)
 
-## **Frama-c + ESBMC**
-these tests will follow the same models for the ones in the original file.
-
-- FRAMA-C COULDN'T SLICE THE __VERIFIER_assert function internal statements with the -slice-calls option, and any other type of options that the researcher tried, needs further investigation!
-
-- loop_array1-1-sliced.c
-  - k-induction-parallel 
-
-   ![terminal output](../../../materials/imgs/loop-diamond2-2-sliced-kinduction.png) 
         
 ---
 
