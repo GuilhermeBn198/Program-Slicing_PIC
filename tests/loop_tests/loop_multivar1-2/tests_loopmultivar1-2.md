@@ -1,15 +1,31 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_diamond101.c**
 
--   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
+-   [code](/tests/loop_tests/loop_diamond1-1/diamond_1-1.c)
 
+## **What does this code do?**
+
+- abort(void): A common library function that terminates the program execution immediately.
+
+- __assert_fail(const char *, const char *, unsigned int, const char *): This function is used in assertion handling for failure scenarios. It displays an error message and terminates the program.
+
+- reach_error(): This is a user-defined function that triggers the __assert_fail function upon execution. It's typically used to indicate a detectable error scenario within the program.
+
+- __VERIFIER_nondet_uint(void): This is an external function that returns an unpredictable unsigned integer. Although the specifics of its implementation are not provided in this code, it usually functions as a placeholder for any potential unsigned integer in the context of software verification efforts.
+
+- __VERIFIER_assert(int cond): This user-defined function checks whether a condition (cond) holds (i.e., if it's true). If the condition fails (returning false), it will trigger the reach_error() function and subsequently abort the program.
+
+- main(void): As with every C program, execution begins with this main() function. This function begins by assigning an unpredictable unsigned integer value to x by using __VERIFIER_nondet_uint(). The program then assigns the value of x + 1 to y.
+
+Following these assignments, the code enters into a loop wherein the values of x and y are incremented by one until x reaches 1024. After this loop, an assertion via __VERIFIER_assert(x == y) checks to verify that x and y are equal. Because of the initial assignment of y as x + 1, it is expected that the assertion test will fail, so __VERIFIER_assert() will call reach_error() and abort the program.
+  
 ## **Frama-c**
 
--   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
+-   it was made various tests verifying all code related to `__assert_fail`, with the objective to analyze the behavior of the tool in this case.
+-   the command to slice the code:
 -   ```bash
-    1.    frama-c -slice-calls reach_error ./loop_array2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./loop_array2-2-sliced1.c
+    frama-c -slice-calls reach_error ./multivar_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./multivar_1-2-sliced.c
     ```
--   this test made frama-c slice the unnecessary parts of the code, which were the definition of SZ, that could be made inside the main function, the `assert(0)` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
+-   frama-c successully sliced all the parts of the code that maintains its original behavior with the use of only one argument for slicing criterion.
 
 **observations:**
 
@@ -19,21 +35,16 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
-- for the k-induction option 
-    
-    ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
+- With this case, ESBMC verified successfully the existence of a bug in this code, reaching assertion 0. Look:
+       
+  ![terminal output](../../../materials/imgs/loop-multivar1-2-kinduction.png)
 
 ## **Frama-c + ESBMC**
 these tests will follow the same models for the ones in the original file.
-```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
-```
-- loop_array2-2-sliced1.c
-  - k-induction-parallel 
 
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
-        
+- The same Results with the original code were found in this sliced version of the code 
+
+   ![terminal output](../../../materials/imgs/loop-multivar1-2-sliced-kinduction.png) 
 ---
 
 ---
