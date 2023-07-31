@@ -29,12 +29,13 @@ In summary, this program increments x from 0 to 0x0fffffff, and for each value o
 
     frama-c -main main -slice-calls __assert_fail -slice-loop-var main  ./nested_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./nested_1-2-sliced.c
 
-    frama-c -main main -slice-calls __assert_fail -slice-wr cond  ./nested_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./nested_1-2-sliced.c
+    frama-c -main main -slice-calls __assert_fail -slice-wr x,y  ./nested_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./nested_1-2-sliced.c
 
-    frama-c -main main -slice-calls __assert_fail -slice-rd cond  ./nested_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./nested_1-2-sliced.c
+    frama-c -main main -slice-calls __assert_fail -slice-rd x,y  ./nested_1-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./nested_1-2-sliced.c
     ```
--   - FRAMA-C COULDN'T SLICE THE `__VERIFIER_assert` function internal statements to reach the `__assert_fail` function with the -slice-calls option, and any other type of options that the researcher tried, needs further investigation!
--   IN this case, it couldn't detect how the variables were important to reach the `__assert_fail` function, so it just removed the variables from the call of `__VERIFIER_assert`.
+-   FRAMA-C COULDN'T SLICE THE `__VERIFIER_assert` function internal statements to reach the `__assert_fail` function with the -slice-calls option, and any other type of options that the researcher tried, needs further investigation!
+
+-   In this case, it couldn't detect how the variables were important to reach the `__assert_fail` function, so it just removed the variables from the call of `__VERIFIER_assert`.
 
 **observations:**
 

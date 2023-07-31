@@ -1,15 +1,36 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_diamond101.c**
 
--   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
+-   [code](/tests/loop_tests/loop_diamond1-1/diamond_1-1.c)
 
+## **What does this code do?**
+
+- The main function initializes an unsigned integer, x, to 10.
+- It then enters a loop that continues as long as x is greater than or equal to 10. Inside this loop, x is incremented by 2.
+- Once the loop finishes, the program checks an assertion using the `__VERIFIER_assert` function. This assertion checks if x is even (since !(x % 2) will return 1 for even numbers and 0 for odd numbers).
+- The `__VERIFIER_assert` function takes an integer condition as an argument. If the condition is false (i.e., if x is odd), it calls the reach_error function and then aborts the program.
+- The reach_error function calls the `__assert_fail` function, which is an external function (presumably from an assertion library) that does not return (as indicated by the `__noreturn__` attribute). This function likely prints an error message and terminates the program.
+
+However, it's important to note that the loop in this program will run indefinitely. Since x is initialized to 10 and is incremented by 2 in each iteration, x will always be greater than or equal to 10. This means the condition for the loop (x >= 10) will always be true, so the loop will never exit. As a result, the assertion check after the loop will never be reached.
+  
 ## **Frama-c**
 
--   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
+-   it was made various tests verifying all code related to `__assert_fail`, with the objective to analyze the behavior of the tool in this case.
+-   the command to slice the code:
 -   ```bash
-    1.    frama-c -slice-calls reach_error ./loop_array2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./loop_array2-2-sliced1.c
+    frama-c -slice-calls __assert_fail ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
+
+    frama-c -main main -slice-calls __assert_fail -slice-loop-var main, ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
+
+    frama-c -main main -slice-calls __assert_fail,abort ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
+
+    frama-c -main main -slice-calls __assert_fail -slice-loop-var main  ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
+
+    frama-c -main main -slice-calls __assert_fail -slice-wr x  ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
+
+    frama-c -main main -slice-calls __assert_fail -slice-rd x  ./overflow_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./overflow_1-1-sliced.c
     ```
--   this test made frama-c slice the unnecessary parts of the code, which were the definition of SZ, that could be made inside the main function, the `assert(0)` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
+-   FRAMA-C COULDN'T SLICE THE `__VERIFIER_assert` function internal statements to reach the `__assert_fail` function with the -slice-calls option, and any other type of options that the researcher tried, needs further investigation!
+-   Because of the infinite loop in the main function, frama-c couldn't detect the real correlation between the main function x variable and the call of the `__assert_fail` function in `__VERIFIER_assert`
 
 **observations:**
 
@@ -19,22 +40,10 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
-- for the k-induction option 
-    
-    ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
+-With this case, ESBMC couldn't verify the code with the --k-induction option. Look:
+       
+  ![terminal output](../../../materials/imgs/loop-overflow1-1-kinduction.png)
 
-## **Frama-c + ESBMC**
-these tests will follow the same models for the ones in the original file.
-```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
-```
-- loop_array2-2-sliced1.c
-  - k-induction-parallel 
-
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
-        
----
 
 ---
 
