@@ -1,16 +1,25 @@
-# **Tests with loop_array2-2.c**
+# **Tests with loop_diamond101.c**
 
--   [code](/tests/loop_tests/loop_array2-2/loop_array2-2.c)
+-   [code](/tests/loop_tests/loop_diamond1-1/diamond_1-1.c)
 
+## **What does this code do?**
+
+- The main function initializes two unsigned integers, x and y, to 0 and 1 respectively.
+- It then enters a loop that continues until `x is less than 6`. Inside this loop, x is incremented by 1 and y is multiplied by 2.
+- Once the loop finishes, the program checks an assertion using the __VERIFIER_assert function. This assertion checks if y is not equal to 64.
+- The `__VERIFIER_assert` function takes an integer condition as an argument. If the condition is false (i.e., if y is equal to 64), it calls the reach_error function and then aborts the program.
+- The reach_error function calls the `__assert_fail` function, which is an external function (presumably from an assertion library) that does not return (as indicated by the `__noreturn__` attribute). This function likely prints an error message and terminates the program.
+
+In summary, this program increments x from 0 to 5, and for each value of x, it multiplies y by 2. At the end, it checks if y is not equal to 64 and aborts the program if it is. Given the initial value of y and the operations performed in the loop, y will indeed be 64 at the end of the loop, so the assertion will fail and the program will abort.
+  
 ## **Frama-c**
 
--   it was made two tests using different methods of verification, with the objective to analyze the behavior of the tool in this case.
--   these are the tests made with the frama-c slicing tool:
+-   it was made various tests verifying all code related to `__assert_fail`, with the objective to analyze the behavior of the tool in this case.
+-   the command to slice the code:
 -   ```bash
-    1.    frama-c -slice-calls reach_error ./loop_array2-2.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./loop_array2-2-sliced1.c
+    frama-c -slice-calls __assert_fail ./underapprox_1-1.c -then-on 'Slicing export' -set-project-as-default -print -then -print -ocode ./underapprox_1-1-sliced.c
     ```
--   this test made frama-c slice the unnecessary parts of the code, which were the definition of SZ, that could be made inside the main function, the `assert(0)` function call in `reach_error()` that in this case, made the same thing as return and the unnecessary statements in the `__VERIFIER_assert` function
-
+-   frama-c perfectly sliced the code based in the __assert_fail function, maintaining all the necessary information to run the verification program in the sliced version of the code akin to the original code.
 **observations:**
 
 -   notice that in this case, the `-slice-return` option doesn't work because it only selects the return portion of the functions, since `main` and `__VERIFIER_assert` don't return anything.
@@ -19,22 +28,17 @@
 ## **ESBMC**
 The tests with the ESBMC verification tool will use the k-induction-parallel option, 
 
-- the first test was with the original file, which . Look:
-- for the k-induction option 
-    
-    ![terminal output](../../../materials/imgs/loop-array2-2-kinduction.png)
+- Because of the characteristics of the code, ESBMC could identify the expected bug detection present in the code within the k=7 attempt through the --k-induction option. Look:
+       
+  ![terminal output](../../../materials/imgs/loop-underapprox1-1-kinduction.png)
 
 ## **Frama-c + ESBMC**
 these tests will follow the same models for the ones in the original file.
-```
-Interesting discoveries were made, such as, with the sliced code in a way the ESBMC can understand better, the results of the k-induction-parallel option now can achieve the status of successfull verification! 
-```
-- loop_array2-2-sliced1.c
-  - k-induction-parallel 
 
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
-        
----
+- underapprox_1-1-sliced.c
+  - becaus of the successful slicing of the original code, the results of verification are similar to the original code results, with the detection of an expected bug present in the code within k=7 attempt through the --k-induction option. Look:
+
+   ![terminal output](../../../materials/imgs/loop-underapprox1-1-sliced-kinduction.png) 
 
 ---
 
