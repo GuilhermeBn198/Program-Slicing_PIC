@@ -73,13 +73,13 @@
   - [x] 6/15 [loop_diamond2-2.c]
   - [x] 7/15 [loop_functions1-1.c]
   - [x] 8/15 [loop_functions1-2.c]
-  - [ ] 9/15 [loop_multivar1-1.c]
-  - [ ] 10/15 [loop_multivar1-2.c]
-  - [ ] 11/15 [loop_underapprox1-1.c]
-  - [ ] 12/15 [loop_underapprox1-2.c]
-  - [ ] 13/15 [loop_underapprox2-1.c]
-  - [ ] 14/15 [loop_nested1-1.c]
-  - [ ] 15/15 [loop_overflow1-1.c]
+  - [x] 9/15 [loop_multivar1-1.c]
+  - [x] 10/15 [loop_multivar1-2.c]
+  - [x] 11/15 [loop_underapprox1-1.c]
+  - [x] 12/15 [loop_underapprox1-2.c]
+  - [x] 13/15 [loop_underapprox2-1.c]
+  - [x] 14/15 [loop_nested1-1.c]
+  - [x] 15/15 [loop_overflow1-1.c]
 
 - [ ] Slice por localização no código
 
@@ -98,8 +98,8 @@
 
 - [ ] Definir as opções do FRAMA-C para efetuar o slice nos arquivos em C focando __VERIFIER_ERROR() OU REACH_ERROR()
   - [x] Verificar para cada programa se ele é um código funcional, i.e., aceito pelo ESBMC (é sim)
-  - [ ] Passar cada código pelo ESBMC, e tabelar os resultados incluindo o tempo
-  - [ ] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
+  - [x] Passar cada código pelo ESBMC, e tabelar os resultados incluindo o tempo
+  - [x] Análise comparativa usando o ESBMC sem efetuar o slice com o Frama-C, i.e., os códigos originais
 
 - [ ] Testar a ferramenta map2check
 
@@ -109,7 +109,7 @@
 
 - [ ] Escrever uma página sobre o FRAMA-C
 
-- [ ] Escrever o relatório final, deadline 15 agosto.
+- [/] Escrever o relatório final, deadline 15 agosto.
 ---
 
 ---
