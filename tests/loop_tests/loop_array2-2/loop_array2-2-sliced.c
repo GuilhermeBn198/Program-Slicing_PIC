@@ -6,6 +6,8 @@ void reach_error_slice_1(void)
   return;
 }
 
+/*@ assigns \result;
+    assigns \result \from \nothing; */
 extern int __VERIFIER_nondet_int(void);
 
 void __VERIFIER_assert_slice_1(int cond)
@@ -28,12 +30,13 @@ void main(void)
   }
   i = 0;
   while (i < 2048) {
+    /*@ assert Eva: initialization: \initialized(&A[i]); */
     tmp = A[i];
     B[i] = tmp;
     i ++;
   }
+  /*@ assert Eva: initialization: \initialized(&A[(int)(2048 / 2)]); */
+  /*@ assert Eva: initialization: \initialized(&B[(int)(2048 / 2)]); */
   __VERIFIER_assert_slice_1(A[2048 / 2] == B[2048 / 2]);
   return;
 }
-
-

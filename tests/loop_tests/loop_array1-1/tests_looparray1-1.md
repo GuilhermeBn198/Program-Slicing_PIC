@@ -44,7 +44,7 @@ ESBMC couldn't verify the through the induction step, even with the slice of unn
 - loop_array1-1-sliced.c
   - k-induction-parallel 
 
-   ![terminal output](../../../materials/imgs/loop-array2-2-sliced-kinduction.png) 
+   ![terminal output](../../../materials/imgs/loop-array1-1-sliced-kinduction.png) 
         
 ---
 

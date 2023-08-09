@@ -40,6 +40,17 @@ The tests with the ESBMC verification tool will use the k-induction-parallel opt
        
   ![terminal output](../../../materials/imgs/loop-multivar1-1-kinduction.png)
 
+## **Frama-c + ESBMC**
+these tests will follow the same models for the ones in the original file.
+
+- There's little to nothing of difference between original and sliced version of the code, the most significant difference is that all the integer constants and the results of the operations are explicitly cast to unsigned int. This doesn't change the behavior of the code, but it makes the type of these values clear.
+
+- But this little change, made ESBMC analysis to reach solution by 2 iterations, although it changed the type of verification step that reached this state, in the original it was the forward condition, with this sliced code, it was the inductive step that reached the final state in 2 steps. 
+  - k-induction-parallel 
+
+   ![terminal output](../../../materials/imgs/loop-multivar1-1-sliced-kinduction.png) 
+ 
+
         
 ---
 
