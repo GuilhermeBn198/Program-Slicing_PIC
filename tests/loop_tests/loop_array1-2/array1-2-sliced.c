@@ -4,11 +4,13 @@ extern  __attribute__((__nothrow__, __noreturn__)) void __assert_fail
 (char const *, char const *, unsigned int, char const *) __attribute__((
 __leaf__));
 
-void reach_error_slice_1(void)
-{
-  __assert_fail("0","array_1-2.c",(unsigned int)3,"reach_error");
+void reach_error() { assert(0); }
+
+void reach_error_slice_1(void){
+  ERROR: {reach_error();}
   return;
 }
+
 
 void __VERIFIER_assert_slice_1(int cond)
 {
