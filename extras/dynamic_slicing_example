@@ -1,0 +1,11 @@
+digraph {
+	a [label=a]
+	b [label=b]
+	x [label="x = a + 1"]
+	y [label="y = x + b"]
+	z [label="z = y * 2"]
+	a -> x
+	b -> y
+	x -> y
+	y -> z
+}
